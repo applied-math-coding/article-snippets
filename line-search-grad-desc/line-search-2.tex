@@ -1,0 +1,29 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=3in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+For some fixed $0<q<1/2$ choose two more points $c, d$
+within $[a,b]$ by
+$$
+c = a + q\cdot(b-a)
+$$
+$$
+d= b - q\cdot(b-a)
+$$
+That is, $c$ is chosen by going $q(b-a)$ to the right of $a$ and
+$d$ is chosen by going $q(b-a)$ to the left of $b$.
+\end{document}
