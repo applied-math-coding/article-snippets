@@ -1,0 +1,48 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=3in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+\begin{equation} \label{main_eq}
+c-a = (1-q)(d-a)
+\end{equation}
+Which states that $c$ shall be located so that it is $q(d-a)$
+left from $d$. In other words, $c$ shall be the point
+next to the upper endpoint of the new interval.
+From the construction we know two further equations:
+\begin{equation*}
+	c-a=q(b-a)
+\end{equation*}
+(in accordance how we have chosen $c$ in the first step)
+\begin{equation*}
+	d-a=(1-q)(b-a)
+\end{equation*}
+(in accordance how we have chosen $d$ in the first step)
+Using this in (\ref{main_eq}) gives
+$$
+q(b-a)=(1-q)^2(b-a)
+$$
+or after canceling out $b-a$, just
+$$
+q=(1-q)^2
+$$
+This equation can be solved for $q$ and yields a solution
+of
+$$
+q=\frac{3}{2}-\frac{\sqrt{5}}{2}
+$$
+lying within $(0,1)$.
+\end{document}
