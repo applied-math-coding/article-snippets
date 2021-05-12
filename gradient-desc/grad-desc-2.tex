@@ -1,0 +1,44 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=3in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{theorem*}{Theorem}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+Notation: \\
+$|\cdot|$ denotes the Euclidean norm in $\mathbb{R}^{n}$\\
+$x\cdot y$ is the Euclidean inner product in $\mathbb{R}^{n}$\\
+$x^T$ denotes the transpose of $x\in\mathbb{R}^n$\\
+\\
+Let us fix $x\in\mathbb{R}^{n}$:
+\\
+For any $h\in\mathbb{R}^{n}$ with $|h|=1$
+we define a function $g:\mathbb{R}\rightarrow\mathbb{R}$ by
+$$
+t\mapsto f(x+t\cdot h)
+$$
+That is, $g$ follows $f$ along the line $t\mapsto x+t\cdot h$.\\
+As we know, the derivative of a function is determining locally its rate of change. Therefore, we easily can formulate our search for the direction of steepest decrease by \\
+\\
+\textbf{"Find $h$ which minimizes $g'(0)$."}\\
+\\
+Since we are only interest in the direction, we require $|h|=1$.\\
+Using the chain rule we can compute $g'$ by
+$$
+g'(0)=\nabla f(x)\cdot h
+$$
+The expression $\nabla f(x)$ is called gradient of $f$ at $x$ and is computed by $(\partial_1 f(x), \partial_2 f(x), \cdots, \partial_n f(x))^T$.\\
+
+\end{document}

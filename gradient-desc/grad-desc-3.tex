@@ -1,0 +1,40 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=3in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{theorem*}{Theorem}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+By the Cauchy-Schwarz inequality we have
+\begin{equation} \label{cauchy_schwarz}
+|g'(x)|=|\nabla f(x)\cdot h|\leq |\nabla f(x)||h|=|\nabla f(x)|
+\end{equation}
+This shows, the maximal absolute value of our optimization is restricted by $|\nabla f(x)|$.\\
+But on the contrary if we set $h:=\nabla f(x) / |\nabla f(x)|$ then we see
+$$
+|\nabla f(x)\cdot h|=\left|\nabla f(x)\cdot \frac{\nabla f(x)}{|\nabla f(x)|}\right|= \frac{|\nabla f(x)|^2}{|\nabla f(x)|}=|\nabla f(x)|
+$$
+This shows, we can attain the maximum in (\ref{cauchy_schwarz}) with this specific value for $h$.\\
+But by knowing how to maximize the absolute value, provides us with the $h$ which minimizes the value itself. In detail, by setting $h=-\nabla f(x) / |\nabla f(x)|$ we compute
+$$
+g'(0)=-\nabla f(x)\cdot \frac{\nabla f(x)}{|\nabla f(x)|}=
+- \frac{|\nabla f(x)|^2}{|\nabla f(x)|}=-|\nabla f(x)|
+$$
+The r.h.s is the smallest value which can be achieved, otherwise it would contradict above found maximal absolute value.\\
+We keep this all as a result:
+\begin{theorem*}
+	The negative gradient is the direction of steepest fall.
+\end{theorem*}
+\end{document}
