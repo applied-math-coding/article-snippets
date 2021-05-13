@@ -1,5 +1,6 @@
 \documentclass[17pt]{extarticle}
 %\usepackage[paperheight=3in]{geometry}
+\usepackage[top=2cm]{geometry}
 \pagestyle{empty} %no page numbering
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -21,6 +22,7 @@ Notation: \\
 $|\cdot|$ denotes the Euclidean norm in $\mathbb{R}^{n}$\\
 $x\cdot y$ is the Euclidean inner product in $\mathbb{R}^{n}$\\
 $x^T$ denotes the transpose of $x\in\mathbb{R}^n$\\
+$\partial_{i}$ is the partial derivative of the $i$'th coordinate\\
 \\
 Let us fix $x\in\mathbb{R}^{n}$:
 \\
@@ -32,13 +34,21 @@ $$
 That is, $g$ follows $f$ along the line $t\mapsto x+t\cdot h$.\\
 As we know, the derivative of a function is determining locally its rate of change. Therefore, we easily can formulate our search for the direction of steepest decrease by \\
 \\
-\textbf{"Find $h$ which minimizes $g'(0)$."}\\
+\textbf{Find $h$ which minimizes $g'(0)$}\\
 \\
 Since we are only interest in the direction, we require $|h|=1$.\\
 Using the chain rule we can compute $g'$ by
 $$
 g'(0)=\nabla f(x)\cdot h
 $$
-The expression $\nabla f(x)$ is called gradient of $f$ at $x$ and is computed by $(\partial_1 f(x), \partial_2 f(x), \cdots, \partial_n f(x))^T$.\\
+The expression $\nabla f(x)$ is called gradient of $f$ at $x$ and is computed by
+ $$
+ \begin{pmatrix}
+ \partial_1 f(x)\\
+  \partial_2 f(x)\\
+   \vdots\\
+ \partial_n f(x)
+ \end{pmatrix}
+ $$
 
 \end{document}
