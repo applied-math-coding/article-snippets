@@ -1,0 +1,36 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[top=1cm]{geometry}
+\usepackage[paperheight=3in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{theorem*}{Theorem}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem*{algorithm*}{Algorithm}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+$$
+(x,y)\mapsto (x^2+y-11)^2+(x+y^2-7)^2
+$$
+with gradient:
+$$
+(x,y)\mapsto
+\begin{pmatrix}
+	4x(x^2+y-11)+2(x+y^2-7)\\
+	2(x^2+y-11)+4y(x+y^2-7)
+\end{pmatrix}
+$$
+
+\end{document}

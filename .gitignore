@@ -1,3 +1,4 @@
 *.aux
 *.log
 *.gz
+gradient-desc/.vscode/settings.json
