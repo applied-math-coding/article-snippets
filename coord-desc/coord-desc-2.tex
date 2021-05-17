@@ -1,0 +1,30 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=4in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+Starting with $x_{1}^{(1)}\in \mathbb{R}^n$ and $i=1$
+we iterate for $1\leq j\leq n-1$
+\begin{equation} \label{cycle}
+x_{j+1}^{(i)}=x_{j}^{(i)}+\tau_{j}^{(i)}e_j
+\end{equation}
+where $\tau_{j}^{(i)}$ solves the problem
+\begin{equation} \label{one-dim-minim}
+	\min_{\tau}f(x_{j}^{(i)}+\tau e_j)
+\end{equation}
+Then we set $x_{1}^{(i+1)}:=x_{n}^{(i)}$ and repeat from (\ref{cycle}) but with $i+1$. 
+In each step (\ref{one-dim-minim}) is solved by a line search applied on the function $\tau\mapsto f(x_{j}^{(i)}+\tau e_j)$.
+\end{document}

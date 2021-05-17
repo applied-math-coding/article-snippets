@@ -1,0 +1,65 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+Let $\xi$ be an accumulation point of the sequence $(x^{(i)}_j)$. Assume $f'(\xi)\neq 0$.
+By starting the iteration at $\xi$ itself, must provide 
+in the first cycle at least one coordinate axis $j$ for which 
+$$
+\arg \min_{\tau}f(\xi+\tau e_i)<f(\xi)
+$$
+This is since otherwise $\xi$ would be a local minimum and thus $f'(\xi)=0$.
+Let us denote this optimum by $\eta$. So,
+$$
+f(\eta)<f(\xi)
+$$
+From the iteration formula we obtain
+$$
+|x_{j+1}^{(i)}-x_{j}^{(i)}|=|\tau_{j}^{(i)}|
+$$
+which shows the sequence $(\tau_j^{(i)})$ being bounded as well.
+Thus the Bolzano-Weierstrass theorem ensures a convergent sequence. By construction we have for each $\tau\in \mathbb{R}$
+$$
+f(x_j^{(i)}+\tau_j^{(i)}e_j)\leq f(x_j^{(i)}+\tau e_j)
+$$
+By taking the limit, this gives:
+$$
+f(\xi+\bar{\tau}e_j)\leq f(\xi+\tau e_j)
+$$
+In other words $\bar{\tau}$ solves
+$$
+\arg \min_{\tau}f(\xi+\tau e_j)
+$$
+Because of the required uniqueness of this optimum,
+we must have 
+\begin{equation} \label{eta}
+\xi+\bar{\tau} e_j=\eta
+\end{equation}
+By taking the limit of 
+$$
+x_{j+1}^{(i)}=x_j^{(i)}+\tau_j^{(i)}e_j
+$$
+we obtain
+$$
+\xi=\xi+\bar{\tau}e_j
+$$
+which together with (\ref{eta}) would imply $\xi=\eta$ and contradicts $f(\eta)<f(\xi)$
+as pointed out above.
+
+
+\end{document}

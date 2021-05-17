@@ -1,0 +1,28 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=4in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+The function $f$ is differentiable and the set 
+$$
+X_1:=\{x\in\mathbb{R} : f(x)\leq f(x^{(1)}_1)\}
+$$
+is bounded. Moreover we require the problem
+$$
+\min_{\tau}f(x+\tau e_i)
+$$
+to have for each $i$ and $x$ a unique solution.
+\end{document}
