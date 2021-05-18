@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	lineSearch "github.com/applied-math-coding/article-snippets/line-search/linesearch"
+	lineSearch "github.com/applied-math-coding/article-snippets/tree/main/line-search/linesearch"
 )
 
 func main() {
