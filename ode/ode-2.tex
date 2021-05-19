@@ -1,0 +1,33 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=5in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	$$
+	y'(t)\approx \frac{y(t+h)-y(t)}{h}
+	$$
+	Using this approximation in the initial value problem leads to
+	$$
+	y(t+h)=y(t)+hf(t,y(t))
+	$$
+	and this provides us with an iteration of the form
+	$$
+	y_{n+1}=y_{n}+hf(t_n, y_n)
+	$$
+
+This means by sub-dividing the interval $[a,b]$ into steps $\{t_0, t_1, \cdots, t_m\}$ with step-size $h$, above iteration lets us estimate the values of $y$ at these steps.
+
+\end{document}
