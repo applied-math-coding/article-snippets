@@ -1,0 +1,90 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=2cm, bottom=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+In order to ease notations, let us assume for a moment the function $f$ fulfills a Lipschitz-condition of the form
+\begin{equation} \label{lipschitz}
+|f(t, x)-f(t,y)|\leq L|x-y|
+\end{equation}
+for some $L>0$.
+From our scheme we have
+\begin{equation} \label{scheme}
+	y_{n+1}=y_n+f(t_n, y_n)
+\end{equation}
+If $y$ denotes the true solution, then by Taylor we may write
+\begin{equation*} 
+	y(t_{n+1})=y(t_n)+y'(t_n)h+o(h^2)
+\end{equation*}
+Further using $y'(t)=f(t,y(t))$ this yields
+\begin{equation} \label{true_y}
+	y(t_{n+1})=y(t_n)+f(t_n, y(t_n))h+h^2R
+\end{equation}
+In the last step we have in addition replaced $o(h^2)$ by some estimate $R$ of the remainder.
+Our aim is to compare $y_{n+1}$ with $y(t_{n+1})$, therefore let us subtract (\ref{true_y}) from (\ref{scheme}):
+$$
+y_{n+1}-y(t_{n+1})=y_n-y(t_n)+f(t_n, y_n)-f(t_n, y(t_n))h-h^2R
+$$
+By introducing $e_k:=y_{k}-y(t_k)$ we further can estimate
+$$
+|e_{n+1}|\leq |e_n|+Lh|e_n|+h^2R
+$$
+Note, we have used (\ref{lipschitz}).\\
+ We reformulate appropriately to obtain
+$$
+|e_{n+1}|\leq (1+Lh)(|e_n|+hR/L)-hR/L
+$$
+which gives
+$$
+|e_{n+1}|+hR/L\leq (1+Lh)(|e_n|+hR/L)
+$$
+In order to ease computation we make the 'pessimistic' estimate of $1+Lh\leq exp(Lh)$.
+Thus we have
+\begin{equation} \label{main_inequ}
+|e_{n+1}|+hR/L\leq exp(Lh)(|e_n|+hR/L)
+\end{equation}
+This holds for all indexes and so also
+$$
+|e_{n}|+hR/L\leq exp(Lh)(|e_{n-1}|+hR/L)
+$$
+Inserting the later into (\ref{main_inequ}) gives
+$$
+|e_{n+1}|+hR/L\leq exp(2Lh)(|e_{n-1}|+hR/L)
+$$
+By proceeding this way, we find
+$$
+|e_{n+1}|+hR/L\leq exp((n+1)Lh)(|e_{0}|+hR/L)
+$$
+Altogether this shows
+\begin{theorem*}
+$$
+|e_{n+1}|\leq exp(L(b-a))(|e_{0}|+hR/L)-hR/L
+$$
+\end{theorem*}
+One can finally weaken the assumption of a global Lipschitz-condition for $f$. Without giving all the details here, the idea is to replace it by:
+\begin{condition*}
+There exists $L, M>0$ such that
+\begin{equation*} 
+	|f(t, x)-f(t,y)|\leq L|x-y|
+\end{equation*}
+for all $|x-y|\leq M$.
+\end{condition*}
+This is like a local version of (\ref{lipschitz}). By carefully repeating above proof, one can see that  it is always possible to choose $h$ small enough in order to have $|y_n-y(t_n)|\leq M$. The rest of the argumentation remains the same.
+\end{document}
