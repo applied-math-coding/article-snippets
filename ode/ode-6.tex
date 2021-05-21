@@ -1,0 +1,94 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+%\usepackage[top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	We assume the same Lipschitz-condition for $f$:
+	\begin{equation} \label{lipschitz}
+		|f(t, x)-f(t,y)|\leq L|x-y|
+	\end{equation}
+	for some $L>0$.
+	From the scheme we have
+	\begin{equation} \label{scheme}
+		y_{n+1}=y_n+hf\left(t_n+\frac{h}{2}, y_n+\frac{h}{2}f(t_n, y_n)\right)
+	\end{equation}
+	and the local error estimated above gives
+	\begin{equation*} 
+		y(t_{n+1})=y(t_n)+hy'\left(t_n+\frac{h}{2}\right)+o(h^3)
+	\end{equation*}	
+	Further using $y'(t)=f(t,y(t))$ this yields
+	\begin{equation} \label{true_y}
+			y(t_{n+1})=y(t_n)+hf\left(t_n+\frac{h}{2}, y\left(t_n+\frac{h}{2}\right)\right)+o(h^3)
+	\end{equation}
+	We will replace $o(h^3)$ by $h^3R$ where $R$ is some estimate of the remainder.\\
+	By introducing $e_k:=y_{k}-y(t_k)$ and subtracting (\ref{scheme}) from (\ref{true_y}) we obtain
+	\begin{align*}
+	&e_{n+1}=e_n+hf\left(t_n+\frac{h}{2}, y\left(t_n+\frac{h}{2}\right)\right)\\
+	&-hf\left(t_n+\frac{h}{2}, y_n+\frac{h}{2}f(t_n, y_n)\right) +h^3R
+	\end{align*}
+	 Further by the triangle inequality and (\ref{lipschitz})
+	\begin{equation} \label{error_estim}
+	|e_{n+1}|\leq |e_n|+Lh\left|y\left(t_n+\frac{h}{2}\right)-y_n-\frac{h}{2}f(t_n, y_n)\right|+h^3R
+	\end{equation}
+	On the r.h.s we use the second local error to write:
+	\begin{align*}
+	&\left|y\left(t_n+\frac{h}{2}\right)-y_n-\frac{h}{2}f(t_n, y_n)\right|=\\
+	&\left|y(t_n)+\frac{h}{2}f(t_n, y(t_n))+o(h^2)-y_n -\frac{h}{2}f(t_n, y_n)\right|
+	\end{align*}
+	which again by using (\ref{lipschitz}) can be estimated like
+	\begin{align*}
+	&\left|y(t_n)+\frac{h}{2}f(t_n, y(t_n))+o(h^2)-y_n -\frac{h}{2}f(t_n, y_n)\right|\leq \\
+	&|e_n|+\frac{hL}{2}|e_n|+o(h^2)
+	\end{align*}
+	Using this result in (\ref{error_estim}) yields
+	$$
+	e_{n+1}\leq |e_n|+hL|e_n|+\frac{h^2L^2}{2}|e_n|+h^3R
+	$$	
+	By reformulating, this can be written as
+	$$
+	e_{n+1}\leq \left(1+hL\left(1+\frac{hL}{2}\right)\right)\left(|e_n|+\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}\right)-\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}
+	$$	
+	which gives
+	$$
+	|e_{n+1}|+\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}\leq \left(1+hL\left(1+\frac{hL}{2}\right)\right)\left(|e_n|+\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}\right)
+	$$
+	Now we use the estimate 
+	$$
+	1+Lh+\frac{h^2L^2}{2}\leq exp(Lh)
+	$$
+	to get	
+	\begin{equation*}
+		|e_{n+1}|+\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}\leq exp(Lh)\left(|e_n|+\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}\right)
+	\end{equation*}
+From here we can do the same steps like for global error of Euler method and recursively apply this inequality to finally arrive at
+	\begin{theorem*}
+		$$
+		|e_{n+1}|\leq exp(L(b-a))\left(|e_{0}|+\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}\right)-\frac{h^2R}{L\left(1+\frac{hL}{2}\right)}
+		$$
+	\end{theorem*}
+	Also here one can weaken the assumption of a global Lipschitz-condition for $f$ to  
+	\begin{condition*}
+		There exists $L, M>0$ such that
+		\begin{equation*} 
+			|f(t, x)-f(t,y)|\leq L|x-y|
+		\end{equation*}
+		for all $|x-y|\leq M$.
+	\end{condition*}
+\end{document}
