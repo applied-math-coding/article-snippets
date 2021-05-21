@@ -1,0 +1,44 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=5in, top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+By assuming $y$ is 3-times differentiable we can look at two Taylor-expansions both around $t+h/2$. One for the point shifted by $h/2$,
+\begin{equation} \label{taylor_one}
+	y(t+h)=y\left(t+\frac{h}{2}\right)+\frac{h}{2}y'\left(t+\frac{h}{2}\right)+\frac{1}{8}y''\left(t+\frac{h}{2}\right)+o(h^3)
+\end{equation}
+and the other at the point shifted by $-h/2$:
+\begin{equation} \label{taylor_two}
+	y(t)=y\left(t+\frac{h}{2}\right)-\frac{h}{2}y'\left(t+\frac{h}{2}\right)+\frac{1}{8}y''\left(t+\frac{h}{2}\right)+o(h^3)
+\end{equation}
+Now we subtract (\ref{taylor_two}) from (\ref{taylor_one}) to obtain
+\begin{equation*}
+	y(t+h)-y(t)=hy'\left(t+\frac{h}{2}\right)+o(h^3)
+\end{equation*}
+and this shows
+$$
+\frac{y(t+h)-y(t)}{h}-y'\left(t+\frac{h}{2}\right)=o(h^3)
+$$
+This is our first local error. But we have to deal with another which arises from the approximation of $y(t+h/2)$. Simply by applying Taylor we see
+$$
+y\left(t+\frac{h}{2}\right)=y(t)+\frac{h}{2}y'(t)+o(h^2)
+$$
+which gives second local error estimate
+$$
+y\left(t+\frac{h}{2}\right)-y(t)-\frac{h}{2}f(t,y(t))=o(h^2)
+$$
+
+\end{document}

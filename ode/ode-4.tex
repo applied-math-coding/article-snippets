@@ -1,0 +1,34 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=5in, top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	$$
+	y'\left(t+\frac{h}{2}\right)\approx \frac{y(t+h)-y(t)}{h}
+	$$
+	Using this approximation in the initial value problem leads to
+	$$
+	y(t+h)\approx y(t)+hf\left(t+\frac{h}{2},y\left(t+\frac{h}{2}\right)\right)
+	$$
+	Moreover, the half-step $y(t+h/2)$ is approximated by
+	$$
+	y\left(t+\frac{h}{2}\right)\approx y(t)+\frac{h}{2}y'(t)=y(t)+\frac{h}{2}f(t,y(t))
+	$$
+	which finally leads to an iteration of the form
+	$$
+	y_{n+1}=y_{n}+hf\left(t_n+\frac{h}{2}, y_n+\frac{h}{2}f(t_n, y_n)\right)
+	$$
+\end{document}
