@@ -1,0 +1,35 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=2in]{geometry}
+%\usepackage[top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+$$
+\begin{pmatrix}
+	y'_1\\
+	y'_2\\
+	y'_3
+\end{pmatrix}=
+\begin{pmatrix}
+	-y_2-y_3\\
+	y_1+0.2 y_2\\
+	0.2+y_1y_3-5.7 y_3
+\end{pmatrix}
+$$
+\end{document}
