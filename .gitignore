@@ -3,3 +3,4 @@
 *.gz
 gradient-desc/.vscode/settings.json
 coord-desc/.vscode/settings.json
+ode/.vscode/settings.json
