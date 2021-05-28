@@ -1,0 +1,32 @@
+\documentclass[17pt]{extarticle}
+\usepackage[paperheight=4in]{geometry}
+%\usepackage[top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+\begin{align*}
+	\frac{\partial{u}}{\partial{t}}+(u\cdot\nabla) u=F(t,x)
+\end{align*}
+where $u$ is a function $[0,T]\times\mathbb{R}^n\rightarrow\mathbb{R}^n$ and
+$F$ a function $[0,T]\times\mathbb{R}^n\rightarrow\mathbb{R}^n$.
+The expression $u\cdot\nabla u$ reads in coordinates:
+$$
+\sum_iu_i\frac{\partial u_j}{\partial x_i}
+$$
+\end{document}
