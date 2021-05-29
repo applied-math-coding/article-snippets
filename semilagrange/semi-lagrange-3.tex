@@ -1,0 +1,48 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+In many application the r.h.s $F(t,x)$ in addition depends on $u(t)$ itself. Since $u(t)$ is a function $\mathbb{R}^n\rightarrow\mathbb{R}^n$ this makes $F$ an operator on some appropriate Banach-space $B$:
+$$
+F:[0,T]\times B\rightarrow B
+$$
+And example of this could be $F(t,u)=\nabla\cdot\nabla u$ which appears as friction force in the Navier-Stokes equation. Then $u$ would be required to be two times differentiable and as a Banach-space one could consider the two times continuous differentiable functions.\\
+If $F$ fulfills a Lipschitz-condition of the sort
+$$
+|F(t,u)-F(t,w)|\leq L|u-w|
+$$
+for some $L>0$, then a general form of Picard-Lindeloef theorem states that the following problem locally has a unique solution:
+\begin{equation} \label{b_space_problem}
+	u'(t)=F(t,u)
+\end{equation}
+with $u(0)=u_0$.
+This is an initial value problem for a vector-field having at time $0$ the value $u_0$.
+With this solution $u$ we can pose another initial value problem:
+\begin{equation} 
+	x'(t)=u(t,x(t))
+\end{equation}
+with $x(0)=x_0$.
+The solution $x$ we search is a function $[0,T]\rightarrow\mathbb{R}^n$.
+Under suitable assumptions on $B$, for instance if it is the two times continuous differentiable function space, this system, by again applying Picard-Lindeloef, has a unique solution $x$.\\
+But then the function $v:t\mapsto u(t,x(t))$ fulfills
+\end{document}
+
+	

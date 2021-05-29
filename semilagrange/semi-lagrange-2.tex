@@ -20,28 +20,30 @@
 \setlength\parindent{0pt} %no indent
 
 \begin{document}
-	Let us consider a velocity field given as a function 
+	We consider a velocity field in a fluid given by the function 
 	$$
 	u:[0,T]\times\mathbb{R}^n\rightarrow\mathbb{R}^n
 	$$
-	and a particle which location is tracked by $x:[0,T]\rightarrow\mathbb{R}^n$.
-	So if we want to know the velocity of the particle at time $t$ we must consider $u(t, x(t))$. This actually we can regard as a function $v:[0,T]\rightarrow\mathbb{R}^n$ defined by $v(t)=u(t, x(t))$.\\
-	By Newton's law, the change of velocity is proportional to forces acting on a particle. Thus,
+	Moreover, we regard a small volume within this fluid which location shall be tracked by $x:[0,T]\rightarrow\mathbb{R}^n$.
+	So if we want to know the velocity of this volume at time $t$ we must consider $u(t, x(t))$. This actually we can regard as a function in time only $v:[0,T]\rightarrow\mathbb{R}^n$ defined by 
+	$$
+	v(t):=u(t, x(t))
+	$$
+	By Newton's law, the change of velocity is proportional to forces acting on the volume. Thus,
 	\begin{equation} \label{newton_law}
-	\frac{d v(t)}{dt}=F(t,x(t))
+	v'(t)=F(t,x(t), v(t))
 	\end{equation}
-	Here $F(t, x(t))$ are all forces acting at time $t$ on the particle at $x(t)$.
-	This equation is already very expressive, since it tells exactly how each particle in a fluid (for instance), would move forward.\\
-	If we replace $v$ by its definition, that is $v(t)=u(t, x(t))$ and apply the chain rule, the r.h.s calculates to
-	\begin{equation} \label{main_eq}
-	\frac{d v(t)}{dt}=\frac{d u(t, x(t))}{dt}=\frac{\partial u}{\partial t}+
+	Here $F(t, x, u)$ collects all these forces. Without going into more details, the appearance of $u$ in that function is due to friction forces or sometimes referred as momentum diffusion and proportional to $\nabla\cdot\nabla u$.\\
+	By replacing $v(t)$ with $u(t, x(t))$ and applying the chain rule we compute
+	\begin{equation*}
+	v'(t)=u'(t, x(t))=\frac{\partial u}{\partial t}+
 	\left(\frac{d x(t)}{dt}\cdot \nabla \right)u
-	\end{equation}
-	Since velocity of the particle at $x(t)$ is given by
+	\end{equation*}
+	Since velocity of the volume is given by
 	$$
 	v(t)=\frac{d x(t)}{dt}
 	$$
-	we find by inserting this into (\ref{main_eq})
+	we find
 	\begin{align*}
 	&	\frac{\partial u}{\partial t}+
 		\left(\frac{d x(t)}{dt}\cdot \nabla \right)u=\\
@@ -49,10 +51,10 @@
 	\left(v(t)\cdot \nabla \right)u=\frac{\partial u}{\partial t}+
 	\left(u\cdot \nabla \right)u
 	\end{align*}
-	Thus the problem (\ref{newton_law}) is transformed into one involving
+	By replacing this result at the l.h.s of (\ref{newton_law}) we arrive at
 	$$
 	\frac{\partial u}{\partial t}+
-	\left(u\cdot \nabla \right)u=F(t,x)
+	\left(u\cdot \nabla \right)u=F(t,x, u)
 	$$	
 \end{document}
 
