@@ -20,29 +20,25 @@
 \setlength\parindent{0pt} %no indent
 
 \begin{document}
-In many application the r.h.s $F(t,x)$ in addition depends on $u(t)$ itself. Since $u(t)$ is a function $\mathbb{R}^n\rightarrow\mathbb{R}^n$ this makes $F$ an operator on some appropriate Banach-space $B$:
+For each volume we intend to solve the following system
+\begin{align*}
+	&v'(t)=F(t,x(t),v(t))\\
+	&x'(t)=v(t)\\
+	&x(0)=x_0\\
+	&v(0)=v_0
+\end{align*}
+which is an ordinary differential equation. For a volume located at $x_0$ with velocity $v_0$, this equation describes how this specific volume moves in space and which velocity it has at each point in time.\\
+Therefore we are actually in the realm of ODE's and can apply whatever scheme we want to solve above equation.
+If moreover we assume that $F$ is continuous and fulfills the Lipschitz-conditions
+with constant $L>0$
 $$
-F:[0,T]\times B\rightarrow B
+|F(t,x,v)-F(t,y,v)|\leq L|x-y|
 $$
-And example of this could be $F(t,u)=\nabla\cdot\nabla u$ which appears as friction force in the Navier-Stokes equation. Then $u$ would be required to be two times differentiable and as a Banach-space one could consider the two times continuous differentiable functions.\\
-If $F$ fulfills a Lipschitz-condition of the sort
 $$
-|F(t,u)-F(t,w)|\leq L|u-w|
+|F(t,x,v)-F(t,x,w)|\leq L|v-w|
 $$
-for some $L>0$, then a general form of Picard-Lindeloef theorem states that the following problem locally has a unique solution:
-\begin{equation} \label{b_space_problem}
-	u'(t)=F(t,u)
-\end{equation}
-with $u(0)=u_0$.
-This is an initial value problem for a vector-field having at time $0$ the value $u_0$.
-With this solution $u$ we can pose another initial value problem:
-\begin{equation} 
-	x'(t)=u(t,x(t))
-\end{equation}
-with $x(0)=x_0$.
-The solution $x$ we search is a function $[0,T]\rightarrow\mathbb{R}^n$.
-Under suitable assumptions on $B$, for instance if it is the two times continuous differentiable function space, this system, by again applying Picard-Lindeloef, has a unique solution $x$.\\
-But then the function $v:t\mapsto u(t,x(t))$ fulfills
+then by Picard-Lindeloef above equations have locally a unique solution.\\
+So, having the initial velocity field $u(0, x)$ for some bounded region in $\mathbb{R}^n$ over which we lay a grid, we can solve for each grid-point $x_i$ above equation by taking $x(0)=x_i$ and $v(0)=u(0, x_i)$. At least, this would make all our volumes moving along their correct trajectories. The problem with this is, there will appear regions for which only a few or even no trajectories are passing after some time has lapsed. For these regions in effect we won't be able to get knowledge of $u(t,x)$.
 \end{document}
 
 	
