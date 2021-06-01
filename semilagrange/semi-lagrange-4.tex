@@ -1,0 +1,55 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+To solve the system
+\begin{align*}
+	&v'(t)=F(t,x(t),v(t))\\
+	&x'(t)=v(t)\\
+	&x(0)=x_0\\
+	&v(0)=v_0
+\end{align*}
+we use the Euler scheme to discretize in time. We could choose a more accurate scheme, but for showing the main idea it suffices. For each grid-point $x_A$ we ask from where the volume arriving here has departed. This volume must exists since it solves the backward-in-time equivalent to above system. Formally this reads
+\begin{equation} \label{v_step}
+\tilde{v}(t^{k+1}, x_A)=\tilde{v}(t^k, x_D)+\Delta t\cdot F(t^k, x_D, \tilde{v}(t^k, x_D))
+\end{equation}
+Note, by using $\tilde{v}(t,x)$ we make explicit that this is the approximate velocity of the volume currently located at $x$.
+Since we don't know $x_D$, equation (\ref{v_step}) cannot be used alone in each step.
+The idea is to discretize $x'(t)=v(t)$ as a part of above system and to solve
+\begin{equation}
+	x_A=x_D+\Delta t\cdot v(t^k, x_D)
+\end{equation} 
+for $x_D$.
+This is done by iterating the equation
+$$
+x_D^{n+1}=x_A-\Delta t\cdot v(t^k, x_D^n)
+$$
+which may be started with $x_D^0:=x_A$.
+For $\Delta t$ being sufficiently small, the r.h.s is a contractive mapping and so Banach's fix-point theorem ensures a unique solution.
+After having found $x_D$, we would like to use it in (\ref{v_step}) in order to approximate the velocity at $x_A$. But since $x_D$ is certainly not matching a grid-point we have to interpolate $\tilde{v}(t^k, x_D)$ as well as $F(t^k, x_D, \tilde{v}(t^k, x_D)$ from known values.
+
+
+
+
+
+\end{document}
+
+	
