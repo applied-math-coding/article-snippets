@@ -35,12 +35,12 @@ Note, by using $\tilde{v}(t,x)$ we make explicit that this is the approximate ve
 Since we don't know $x_D$, equation (\ref{v_step}) cannot be used alone in each step.
 The idea is to discretize $x'(t)=v(t)$ as a part of above system and to solve
 \begin{equation}
-	x_A=x_D+\Delta t\cdot v(t^k, x_D)
+	x_A=x_D+\Delta t\cdot \tilde{v}(t^k, x_D)
 \end{equation} 
 for $x_D$.
 This is done by iterating the equation
 $$
-x_D=x_A-\Delta t\cdot v(t^k, x_D)
+x_D=x_A-\Delta t\cdot \tilde{v}(t^k, x_D)
 $$
 which may be started with $x_D^0:=x_A$.
 For $\Delta t$ being sufficiently small, the r.h.s is a contracting map and so Banach's fix-point theorem ensures a unique solution.
