@@ -40,10 +40,10 @@ The idea is to discretize $x'(t)=v(t)$ as a part of above system and to solve
 for $x_D$.
 This is done by iterating the equation
 $$
-x_D^{n+1}=x_A-\Delta t\cdot v(t^k, x_D^n)
+x_D=x_A-\Delta t\cdot v(t^k, x_D)
 $$
 which may be started with $x_D^0:=x_A$.
-For $\Delta t$ being sufficiently small, the r.h.s is a contractive mapping and so Banach's fix-point theorem ensures a unique solution.
+For $\Delta t$ being sufficiently small, the r.h.s is a contracting map and so Banach's fix-point theorem ensures a unique solution.
 After having found $x_D$, we would like to use it in (\ref{v_step}) in order to approximate the velocity at $x_A$. But since $x_D$ is certainly not matching a grid-point we have to interpolate $\tilde{v}(t^k, x_D)$ as well as $F(t^k, x_D, \tilde{v}(t^k, x_D)$ from known values.
 
 
