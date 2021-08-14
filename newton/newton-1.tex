@@ -1,0 +1,39 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[top=1cm]{geometry}
+%\usepackage[paperheight=3in]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{theorem*}{Theorem}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem*{algorithm*}{Algorithm}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	This works witouth Taylor, just be observing each partial derivati:
+	
+0<=	f(x_i+h)-f(x)=f'(x)h+r(h)
+0 <= ... = -f'(x)h+r(h)
+r(h)/h -> 0
+so  f'(x)>=0 and -f'(x)>= 0
+....
+	
+Let us look at Taylor's theorem as it is valid for a real valued $C^2$-function (two time continuous differentiable):
+
+$$
+f(x+h)=f(x)+h^T f'(x)+\frac{1}{2!}h^{T}D^2f(x+\theta h)h
+$$
+with $\theta$ being a suitable real in $(0,1)$.
+
+\end{document}

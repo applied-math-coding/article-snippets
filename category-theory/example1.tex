@@ -1,0 +1,63 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	
+
+\begin{example}
+	We take as objects all sets and as morphisms all binary relations between two sets. That is, if $A, B$ are sets and $f:A\rightarrow B$ is a morphism, then $f$ can be viewed as subset of $A\times B$. In general these morphisms are not functions, it could be that $(a,b)\in f$ and $(a, c)\in f$ for $b,c\in B$ with $b\neq c$.\\
+	For two morphisms $f:A\rightarrow B$ and $g:B\rightarrow C$ we define composition as follows:
+	$$
+	(a,c)\in g\circ f \ :\leftrightarrow \ \exists b\in B \ (a,b)\in f \wedge (b,c)\in g 
+	$$
+	In words, the composition relates $a$ to $c$ if and only if there is a 'bridge' $b$ such that $f$ relates $a$ to $b$ and $g$ relates $b$ to $c$.\\
+	Before showing that the axioms of category are fulfilled note how this category is abstracting the notion of functions. Although, from a point-wise view, these morphisms are not functions, they still behave like functions w.r.t an appropriate defined composition.\\
+    For any object $A$ we define
+    $$id_A =\{(a,a) \ | \ a\in A\}$$
+    One immediately sees that this serves correctly as identity morphism.\\
+    It remains to proof associativity. Assume we are given $f:A\rightarrow B$, $g:B\rightarrow C$ and $h:C\rightarrow D$.
+    $$
+    (a,d)\in (h\circ g)\circ f
+    $$
+    means, there exists $b\in B$ such that
+    \begin{equation} \label{a_b_f}
+    (a,b)\in f
+    \end{equation}
+    and
+    $$(b,d)\in h\circ g$$
+    Moreover, the latter implies there exists $c\in C$ such that
+    \begin{equation} \label{b_c_g}
+    (b,c)\in g
+    \end{equation}
+    and
+    \begin{equation} \label{c_d_h}
+    (c,d)\in h
+    \end{equation}
+    All this follows directly from the definition of $\circ$.
+    By putting equations (\ref{a_b_f}), (\ref{b_c_g}) and (\ref{c_d_h}) together, lets us infer by doing 
+    similar considerations that $(a,d)\in h\circ (g\circ f)$.\\
+    This shows $(h\circ g)\circ f=h\circ (g\circ f)$.    
+\end{example}
+
+
+\end{document}
+
+	

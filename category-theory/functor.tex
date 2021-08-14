@@ -1,0 +1,40 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+\begin{definition}
+	\textbf{Functor}\\
+	A functor $F$ between to categories $C$ and $D$ consists of two functions.
+	One which maps objects from $C$ to objects in $D$ and one which maps morphisms from
+	$C$ to morphisms in $D$. Moreover, the following must hold:\\
+	(1) for $f\in Hom(A,B)$, $F(f)\in Hom(F(A), F(B))$\\
+	(2) $F(id_A)=id_{F(A)}$\\
+	(3) $F(g\circ f)=F(g)\circ F(f)$
+\end{definition}
+Functors defined this way are structure preserving mappings between categories.
+
+TODO example F:N to Z   N, Z as monoids
+TODO p 10, 6.
+TODO 6.1
+
+\end{document}
+
+	

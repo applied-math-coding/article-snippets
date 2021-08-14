@@ -1,0 +1,55 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	\begin{definition}
+		\textbf{Category}\\
+A category consists of a class of \textbf{objects} 
+$$
+A, B, C, \cdots
+$$
+ and a class of \textbf{morphisms}
+ $$f, g, h, \cdots$$
+for which the following axioms are fulfilled:\\ \\
+(1) To each morphism $f$ there exists operators called \textbf{domain}, \textbf{codomain}
+and denoted by
+$$ dom(f), \ cod(f)$$
+Each operator associates an object to $f$.\\ \\
+
+(2) If for two morphisms $f$ and $g$ we have $cod(f)=dom(g)$, then there exists a morphism
+named \textbf{composition} of $f$ and $g$ which is denoted by $g\circ f$.
+Moreover, we have 
+$$dom(g\circ f)=dom(f)$$
+$$ cod(g\circ f)=cod(g)$$
+
+(3) For each object $A$ there exists an morphism named \textbf{identity} and denoted by
+$$id_A$$ which fulfills $dom(id_A)=A$ and $cod(id_A)=A$.
+
+(4) The composition is required to be \textbf{associative} that is, for any morphisms $f,g,h$ 
+$$(f\circ g)\circ h=f\circ(g\circ h)$$
+given that the compositions are defined.
+
+(5) Composing a morphism $f$ that has $dom(f)=A$ and $cod(f)=B$ with corresponding identities, fulfills
+$$id_B\circ f=f=f\circ id_A$$
+\end{definition}
+\end{document}
+
+	

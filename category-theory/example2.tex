@@ -1,0 +1,51 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+
+
+\begin{example}
+	\textbf{Monoid}\\
+	This is a very often appearing structure in category theory. A monoid is a set $S$ together with a binary relation $\cdot:S\times S\rightarrow S$ fulfilling the following:\\ 
+	(1) it is associative, that is $(x\cdot y)\cdot z = x\cdot (y\cdot z)$\\
+	(2) it has a neutral element $e$, which satisfies $e\cdot x=x=x\cdot e$ for all $x\in S$.\\
+	
+	A moinid can be seen as a category with only one object and morphisms taken to be all elements in $S$. Moreover, composition is defined to be the binary relation $\cdot$.
+	One easily verifies that all axioms are fulfilled. Note, since the category has only one element, say $A$, any morphism $x$ has $dom(x)=A=cod(x)$. Therefore, composition works among all morphisms, that is in analogy with the operation $\cdot$ between elements of $S$.\\
+	Examples for monoids are $N, Q, R$, the natural numbers, the rationals and the reals.
+	The binary relation can be taken to be the addition or multiplication.
+\end{example}
+
+\begin{example}
+	\textbf{The category $Mon$}\\
+	From monoids we can build a category $Mon$ which objects are all monoids and morphism functions which preserve the monoid structure in the following sense.\\ \\
+	 If $f:X\rightarrow Y$ is a morphism then \\ 
+	(1) for any $x,y\in X$
+	$$
+	f(x\cdot y)=f(x)\cdot f(y)
+	$$
+	(2) $f(e_X)=e_Y$ where $e_X, e_Y$ are the corresponding neutral elements of $X$ resp. $Y$ \\ \\
+	One easily checks that this still holds when composing two morphisms $f\circ g$. Therefore the composition of functions provides a composition between morphisms which fulfills all axioms of a category.\\	
+\end{example}
+
+\end{document}
+
+	
