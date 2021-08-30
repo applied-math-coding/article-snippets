@@ -1,0 +1,112 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+Throughout this section, let $\mathcal{C}$ denote some category.\\
+Remember, a category consists of objects and morphisms. Each morphism $f$ has a domain $\mathbf{dom(f)}$ and a codomain $\mathbf{cod(f)}$, where each of these are again objects in $\mathcal{C}$.\\ \\
+We need three important definitions:\\
+\begin{definition*}
+	For any two elements $A,B\in \mathcal{C}$,
+	$$\mathbf{Hom(A,B)}$$
+	denotes all morphisms $f$ with $dom(f)=A$ and $cod(f)=B$.
+\end{definition*}
+Depending on its size,
+$Hom(A,B)$ can be a proper class or a set. In the category $Set$ of all sets, $Hom(A,B)$ simply is the set of all functions with domain $A$ and image $B$.\\
+
+\begin{definition*}
+	Two objects $A,B$ have a product, denoted by $\mathbf{A\times B}$ if the following is satisfied:\\
+	(1) $A\times B\in \mathcal{C}$\\ 
+	(2) there are morphisms $p:A\times B\rightarrow A$, $q:A\times B\rightarrow B$ such that:\\
+	For any morphisms $f\in Hom(X,A)$ and $g\in Hom(X,B)$ there is a unique morphism $\langle f,g\rangle$ such that $p\circ \langle f,g\rangle=f$ and $q\circ \langle f,g\rangle=g$	
+\end{definition*}
+In the category $Set$ this corresponds to the usual cartesian product, with $p,q$ being the respective projections.\\ \\
+Assume we have morphisms $f\in Hom(A,B)$, $g\in Hom(C,D)$
+and that the products $A\times C$, $B\times C$ do exist. Now, consider $f\circ p_A\in Hom(A\times C, B)$ and $g\circ p_B\in Hom(A\times C, D)$, where $p_A, \ p_B$ denote the corresponding projection morphisms for the product $A\times C$. By the definition of $B\times C$, there exists a unique $\langle f\circ p_A, g\circ p_B\rangle\in Hom(A\times C, B\times D)$. This latter morphism we will denote by $\mathbf{f\times g}$.\\
+In the category $Set$ this is just the usual product of two functions.\\
+
+\begin{definition*}
+	For two objects $B, C\in\mathcal{C}$ we call an object exponential, denoted by
+	$$\mathbf{B^C}$$
+	if the following is satisfied:\\
+	(1) $B^C\in\mathcal{C}$\\
+	(2) there is a morphism $\epsilon\in Hom(B^C\times C, B)$ such that:\\
+	For any $f\in Hom(A\times B, C)$ there exists a unique $\tilde{f}\in Hom(A, C^B)$ with $\epsilon\circ(\tilde{f}\times id_B)=f$.
+\end{definition*}
+The aforementioned morphism $\tilde{f}$ is called \textbf{transpose} of $f$.\\
+In the category $Set$ the $B^C$ is nothing else than the set of all function from $C$ to $B$ and $\epsilon$ is given by $\epsilon:(f, x)\mapsto f(x)$.\\
+
+A category in which any pair of objects have a product and an exponential, we call \textbf{cartesian closed}.
+Having all this, we can now formulate the definition of currying.\\
+	
+\begin{definition*}
+	In a cartesian closed category \textbf{currying} is the isomorphism
+	\begin{equation*}
+		\kappa:Hom(A\times B, C)\rightarrow Hom(A, C^B)
+	\end{equation*}
+	which assigns each $f\in Hom(A\times B, C)$ its transpose $\tilde{f}$.
+\end{definition*}
+
+If we are in category $Set$, this actually provides nothing considerably new. But have a look at the next example. Before that, let us mention that the inverse of $\kappa$ in above definition is the morphism $g\mapsto\epsilon\circ(g\times id_B)$.\\
+
+\begin{example*}
+	We can view the formulas of a formal language that extends propositional calculus as objects of a category and take as morphism all relations of the form
+	$$a\vdash b$$
+	That is, $a$ and $b$ are formulas, and $b$ is provable from $a$.\\
+	Moreover, morphisms and formulas are identified if they are logical equivalent.\\
+	The identity morphism is just
+	$$a\vdash a$$
+	and composition defined by
+	$$
+	(a\vdash b)\circ (d\vdash a) = d\vdash b
+	$$
+	We keep the notation of $\vdash$ for morphisms instead of $\rightarrow$ to not intermix with the corresponding symbol of the language.\\
+	The product of two objects we define by
+	$$a\times b:=a\wedge b$$
+	and take as projection the morphisms
+	$$a\wedge b\vdash a$$
+	$$a\wedge b\vdash b$$
+	It is straightforward to verify that this indeed defines a product:\\
+	Let $f=x\vdash a$ and $g=x\vdash b$. Then
+	$$\langle f, g\rangle = x\vdash a\wedge b$$ 
+	Its uniqueness follows from the fact, that each pair of objects determine at most one morphism.\\
+	Moreover, directly from the definition of $f\times g$ for two morphisms $f=d\vdash b$, $g=c\vdash a$ we obtain
+	$$(d\vdash b)\times (c\vdash a)=d\wedge c\vdash b\wedge a$$
+	Now, let us look at the exponential $c^b$ of two formulas. We define
+	$$c^b:=b\rightarrow c$$
+	and as evaluation we just take the first rule of inference:
+	$$\epsilon: (b\rightarrow c)\times b\vdash c$$
+	These definitions imply that the transposed $\tilde{f}$ of a morphism $f=a\wedge b\vdash c$
+	would be given by
+	$$\tilde{f}=a\vdash (b\rightarrow c)$$
+	Let us verify that $\epsilon\circ(\tilde{f}\times id_b)=f$:\\
+	By using the above definition we obtain
+	$$\epsilon\circ(a\wedge b\vdash (b\rightarrow c)\wedge b)$$
+	Since $(b\rightarrow c)\wedge b)=(b\rightarrow c)\times b)$, this composition results into
+	$$a\wedge b\vdash c$$ 
+	that equals $f$.\\
+	Note, the uniqueness of $\tilde{f}$ again follows from the fact the two objects at most determine one morphism.
+\end{example*}
+Note, how well category theory served in the previous example to define exponentiation of formulas. Moreover, its definition ensures that all functional aspects of exponentiation do hold in this context as well.	This is yet another testimony for the wide range of applications category theory provides to other fields.
+\end{document}
+
+	
