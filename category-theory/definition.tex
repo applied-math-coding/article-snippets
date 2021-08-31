@@ -13,6 +13,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{example}{Example}
 \newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem*{condition*}{Condition}
@@ -20,7 +21,7 @@
 \setlength\parindent{0pt} %no indent
 
 \begin{document}
-	\begin{definition}
+	\begin{definition*}
 		\textbf{Category}\\
 A category consists of a class of \textbf{objects} 
 $$
@@ -40,16 +41,16 @@ Moreover, we have
 $$dom(g\circ f)=dom(f)$$
 $$ cod(g\circ f)=cod(g)$$
 
-(3) For each object $A$ there exists an morphism named \textbf{identity} and denoted by
-$$id_A$$ which fulfills $dom(id_A)=A$ and $cod(id_A)=A$.
+(3) For each object $A$ there exists an morphism named \textbf{identity}, denoted by
+$$id_A$$ and that fulfills $dom(id_A)=A$ and $cod(id_A)=A$.
 
-(4) The composition is required to be \textbf{associative} that is, for any morphisms $f,g,h$ 
+(4) The composition is required to be \textbf{associative}, that is, for any morphisms $f,g,h$ 
 $$(f\circ g)\circ h=f\circ(g\circ h)$$
 given that the compositions are defined.
 
 (5) Composing a morphism $f$ that has $dom(f)=A$ and $cod(f)=B$ with corresponding identities, fulfills
 $$id_B\circ f=f=f\circ id_A$$
-\end{definition}
+\end{definition*}
 \end{document}
 
 	
