@@ -1,0 +1,43 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+We consider all elements $x$ that fulfill the following relation
+$$x=x$$
+Trivially, all sets fulfill this relation. The question arises, if there exists a set that
+contains all these elements. In other words:\\
+Is $\{x: \ x=x\}$ a set?\\
+If yes, then this set would contain all sets, since each set fulfills $x=x$.
+Let us assume it is a set and denote it by $X$. Define
+$$y:=\{z\in X \ : \ z\notin z\}$$
+By axioms of set-theory, this is a set and moreover either $y\in y$ or $y\notin y$.
+If $y\in y$, then since $y\in X$ the definition of $y$ implies $y\notin y$. 
+So it must be $y\notin y$. But then, the definition of $y$ implies $y\in y$.\\
+All in all, this yields a contradiction and thus $X$ cannot be a set.\\ \\
+Although it is not a set, it still makes perfectly sense, in terms of propositional logic, to consider
+expressions of the form
+$$\{x \ : \ \phi(x)\}$$
+where $\phi$ is any formula. Though, we must take in mind that the expression does not always refer to a set. In such cases they are called (proper) classes.
+
+
+\end{document}
+
+	
