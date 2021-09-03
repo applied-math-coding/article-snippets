@@ -23,16 +23,20 @@
 	
 
 \begin{example}
-	We take as objects all sets and as morphisms all binary relations between two sets. That is, if $A, B$ are sets and $f:A\rightarrow B$ is a morphism, then $f$ can be viewed as subset of $A\times B$. In general these morphisms are not functions, it could be that $(a,b)\in f$ and $(a, c)\in f$ for $b,c\in B$ with $b\neq c$.\\
-	For two morphisms $f:A\rightarrow B$ and $g:B\rightarrow C$ we define composition as follows:
+	We take as objects all sets and as morphisms all binary relations between two sets.\\ \\
+	 If $A$ and $B$ are sets then a binary relation is a subset $f\subset A\times B$. So if $(a,b)\in R$, then $a$ 'relates' to $b$.\\ \\
+	 In general, such a relation is not a function. It could be that $(a,b)\in f$ and $(a, c)\in f$ for $b,c\in B$ with $b\neq c$.\\ 
+	 
+	We define composition between morphisms as follows: \\
+    If $f:A\rightarrow B$ and $g:B\rightarrow C$ then
 	$$
 	(a,c)\in g\circ f \ :\leftrightarrow \ \exists b\in B \ (a,b)\in f \wedge (b,c)\in g 
 	$$
 	In words, the composition relates $a$ to $c$ if and only if there is a 'bridge' $b$ such that $f$ relates $a$ to $b$ and $g$ relates $b$ to $c$.\\
-	Before showing that the axioms of category are fulfilled note how this category is abstracting the notion of functions. Although, from a point-wise view, these morphisms are not functions, they still behave like functions w.r.t an appropriate defined composition.\\
+	
     For any object $A$ we define
     $$id_A =\{(a,a) \ | \ a\in A\}$$
-    One immediately sees that this serves correctly as identity morphism.\\
+    One immediately sees that this serves correctly as identity morphism.\\ \\
     It remains to proof associativity. Assume we are given $f:A\rightarrow B$, $g:B\rightarrow C$ and $h:C\rightarrow D$.
     $$
     (a,d)\in (h\circ g)\circ f
@@ -52,9 +56,35 @@
     (c,d)\in h
     \end{equation}
     All this follows directly from the definition of $\circ$.
-    By putting equations (\ref{a_b_f}), (\ref{b_c_g}) and (\ref{c_d_h}) together, lets us infer by doing 
-    similar considerations that $(a,d)\in h\circ (g\circ f)$.\\
+    By putting equations (\ref{a_b_f}), (\ref{b_c_g}) and (\ref{c_d_h}) together, we see immediately that $(a,d)\in h\circ (g\circ f)$.\\
     This shows $(h\circ g)\circ f=h\circ (g\circ f)$.    
+\end{example}
+
+The next example introducing a very often appearing structure in category theory.\\
+\begin{example}
+	\textbf{Monoid}\\
+	A monoid is a set $S$ together with a binary relation $\cdot:S\times S\rightarrow S$ fulfilling the following:\\ \\
+	(1) it is associative, that is $(x\cdot y)\cdot z = x\cdot (y\cdot z)$\\
+	(2) it has a neutral element $e$, which satisfies $e\cdot x=x=x\cdot e$ for all $x\in S$.\\
+	
+	A moinid can be seen as a category with only one object and morphisms taken to be all elements in $S$. Moreover, composition is defined to be the binary relation $\cdot$.\\ \\
+	One easily verifies that all axioms are fulfilled. Note, since the category has only one element, say $A$, any morphism $x$ has $dom(x)=A=cod(x)$. Therefore, composition works between all morphisms.\\ \\
+	Examples for monoids are $N, Q, R$, that is, the natural numbers, the rationals and the reals.
+	The binary relation can be taken to be the addition or multiplication.
+\end{example}
+
+This last example shows very nicely how much morphisms can deviate from being functions between sets. The power of category theory is that everything what holds in $Set$ and is based only on the axioms of categories resp. morphisms, likewise holds in all monoids.
+
+\begin{example}
+	\textbf{The category $Mon$}\\
+	From monoids we can build a category $Mon$ which objects are all monoids and morphism functions which preserve the monoid structure in the following sense.\\ \\
+	If $f:X\rightarrow Y$ is a morphism then \\ 
+	(1) for any $x,y\in X$
+	$$
+	f(x\cdot y)=f(x)\cdot f(y)
+	$$
+	(2) $f(e_X)=e_Y$ where $e_X, e_Y$ are the corresponding neutral elements of $X$ resp. $Y$ \\ \\
+	One easily checks that this still holds when composing two morphisms $f\circ g$. Therefore the composition of functions provides a composition between morphisms which fulfills all axioms of a category.\\	
 \end{example}
 
 
