@@ -1,0 +1,97 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+
+\begin{example}
+	Remember our previous introduced category $Mon$. Let us look at the morphism $i:N\rightarrow Z$
+	which is the inclusion of natural numbers into all integers.
+	We show $i$ is monomorph. For this let $g,h\in Hom(Z,N)$ and $i\circ g=i\circ h$.
+	This implies for any $x\in Z$, $g(x)=h(x)$ and so $g=h$.\\
+	Next, we show $i$ is epimorph as well. First we make a simple observation:\\
+	For any morphism $f:Z\rightarrow N$ and positive $n\in Z$ we have by definition of morphisms in $Mon$,\\
+	$$0=f(n-n)=f(n)+f(-n)$$
+	which implies 
+	$$-f(n)=f(-n)$$
+	Now assume $f\circ i =g\circ i$ for $f,g\in Hom(Z,N)$. This implies trivially $f(z)=g(z)$ for $z\in Z\cap N$.
+	For negative $z\in Z$, we have by the previous remark
+	$$f\circ i(-z)=f(-z)=-f(z)$$
+	and the same of $g$
+	$$g\circ i(-z)=-g(z)$$
+	Combined this yields $-g(z)=-f(z)$, hence $g(z)=f(z)$.
+	Altogether this shows $f=g$ and thus $i$ is epimorph.\\
+	Interestingly $i$ is not isomorph! Otherwise there would be a morphism $i^{-1}:Z\rightarrow N$
+	such that $i\circ i^{-1}(-1)=-1$, but this is impossible since $-1\notin N$.	
+\end{example}
+
+\begin{example}
+	This example comes from topology and regards the category $Top$ which objects are topological spaces and the morphisms are taken to be all continuous maps. Consider the identity map $id: (N, \tau)\rightarrow (N,\sigma)$, where $N$ denotes the set of natural numbers one time equipped with the discrete topology $\tau$ and one times with the chaotic topology $\sigma$. The latter consists of the sets $N$ and $\emptyset$ only. Trivially this map is an monomorphism and epimorphism, but it does not have an inverse. This inverse necessarily would be the map  $id: (N, \sigma)\rightarrow (N,\tau)$, but this is not continuous.
+\end{example}
+
+These examples show, in the above theorem the other direction in general does not hold.
+In category theory, epimorph and monomorph do not imply isomorph.
+The question arises, under which additional conditions does this hold?
+For this to answer, we need two more definition.
+
+\begin{definition}
+	\textbf{Retraction}\\
+	A morphism $f\in Hom(A,B)$ is called a retraction if there exists a right inverse that is,
+	a $h\in Hom(B,A)$ with
+	$$f\circ h=id_B$$
+\end{definition}
+
+\begin{definition}
+	\textbf{Section}\\
+	A morphism $f\in Hom(A,B)$ is called a section  if there exists a left inverse that is,
+	a $h\in Hom(B,A)$ with
+	$$h\circ f=id_B$$
+\end{definition}
+
+With this we can formulate the following theorem which gives answer to the above question.
+\begin{theorem}
+	A monomorphism $f$ is an isomorphism if and only if it is a retraction.
+\end{theorem}
+\begin{proof}
+	Assume for the monomorphism $f\in Hom(A,B)$ there is $g\in Hom(B,A)$ such that $f\circ g=id_B$.
+	Then,
+	$$f\circ(g\circ f)=(f\circ g)\circ f=id_B\circ f=f\circ id_B$$
+	Since $f$ is monomorph this implies
+	$$g\circ f=id_B$$
+	and this altogether $g=f^{-1}$.
+\end{proof}
+
+In analogy we have
+\begin{theorem}
+	A epimorphism $f$ is an isomorphism if and only if it is a section.
+\end{theorem}
+\begin{proof}
+	Assume $f\in Hom(A,B)$ is a epimorphism and $g\in Hom(B,A)$ such that $g\circ f=id_B$. Then,
+	$$(f\circ g)\circ f =f\circ(g\circ f)=f\circ id_B=id_B\circ f$$
+	Since $f$ is epimorph this implies
+	$$f\circ g=id_B$$
+	and thus $g=f^{-1}$.
+\end{proof}
+
+\end{document}
+
+	
