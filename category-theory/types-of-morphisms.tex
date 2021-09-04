@@ -11,6 +11,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
 \newtheorem{example}{Example}
 \newtheorem{definition}{Definition}
 \newtheorem{remark}[theorem]{Remark}
@@ -21,139 +22,28 @@
 
 \begin{document}
 From functions we consider the properties of being injective and surjective.
-Let us given a function $f:X\rightarrow Y$ between two sets.\\
-Injectivity states that for a given $y$ there is at most one element $x$ such that $f(x)=y$.
-Surjectivity states that for each $y$ there is at least one $x$ such that $f(x)=y$.
-To produce abstraction of these terms for category theory, we somehow most remove the element-wise
-consideration. Remember, categories don't know about elements, they only no about the domains, functions
-and codomains.\\
-The definition of injective is easily seen to be equivalent to the statement:
-\begin{condition*}
-For any two function $g,h:Y\rightarrow X$, from $f\circ g=f\circ h$ follows $g=h$.
-\end{condition*}
+Let us given a function $f:X\rightarrow Y$ between two sets.\\ \\
+\textbf{Injectivity} states that for a given $y$ there is at most one element $x$ such that $f(x)=y$.\\ \\
+\textbf{Surjectivity} states that for each $y$ there is at least one $x$ such that $f(x)=y$.\\
 
-If $f$ is injective then this is clear since otherwise one would have $y \in Y$ with $g(y)\neq h(y)$ but $f(g(y))=f(h(y))$
-which contradicts the injectivity. On the other hand, if above statement would hold for each $g,h$ and $f$ would not be injective, then there is $y\in Y$ and $x_1\neq x_2$ with $f(x_1)=f(x_2)=y$. This would allow to construct two different functions $g, h:Y\rightarrow X$, where $g$ only takes the constant value $x_1$ and $h$ the constant value $x_2$. This would fulfill $f\circ g=f\circ h$.
-
-A similar condition can be seen to be equivalent to $f$ being surjective:
-\begin{condition*}
-	For any two function $g,h:Y\rightarrow X$, from $g\circ f=h\circ f$ follows $g=h$.
-\end{condition*}
-If $f$ is surjective than the entire $Y$ is its image. So $g=h$ follows immediately. The other way round follows from noting that if the image of $f$ would be not the entire $Y$, then two functions with $g\circ f=h\circ f$ always could 
-be made different on the part of $Y$ which is not in the image of $f$. The existence of such a function could be constructed by choice.\\
-Above proofs are actually not important to us. What we gained by above statements is to find a suitable abstraction for injectivity and surjectivity:
-
-\begin{definition}
-	\textbf{Monomorphism}\\
-	A morphism $f:A\rightarrow B$ of some category is call monomorphism if the following condition holds:
-	For any two morphisms $g,h:Y\rightarrow X$ from $f\circ g=f\circ h$ follows $g=h$.	
-\end{definition}
-
-
-\begin{definition}
-	\textbf{Monomorphism}\\
-	A morphism $f:A\rightarrow B$ of some category is call monomorphism if the following condition holds:\\
-	For any two morphisms $g,h:B\rightarrow A$, from $f\circ g=f\circ h$ follows $g=h$.	
-\end{definition}
-
-\begin{definition}
-	\textbf{Epimorphism}\\
-	A morphism $f:A\rightarrow B$ of some category is call epimorphism if the following condition holds:\\
-	For any two morphisms $g,h:B\rightarrow A$, from $g\circ f=h\circ f$ follows $g=h$.	
-\end{definition}
-
-A function $f$ which is injective and surjective has an inverse $f^{-1}$ which fulfills $f\circ f^{-1}=id$ and $f^{-1}\circ f=id$. This can be obtained from $(y,x)\in f^{-1} \ :\leftrightarrow \ (x,y)\in f$. We could ask if the same holds at the category level as well.
-First of all let us abstract the term inverse:
-
-\begin{definition}
-	\textbf{Isomorphism}\\
-	A morphism $f:A\rightarrow B$ is called isomorphism if the exists a morphism $f^{-1}:B\rightarrow A$ such that
-	$$f^{-1}\circ f=id_A$$
-	and
-	$$f\circ f^{-1}=id_B$$	
-\end{definition}
-This map $f^{-1}$ is called inverse and unique. To this, assume there is a further inverse $g$.
-Then $g\circ f=id_A$. By composing with $f^{-1}$ we obtain $(g\circ f)\circ f^{-1}=id_A\circ f^{-1}$.
-Associativity yields, $g\circ id_B=id_A f^{-1}$ and by using properties of the identity, $g=f^{-1}$.\\
-Note, in most categories isomorphic objects are considered the same. For instance in group theory, two isomorphic groups are typically treated to be the same.
-
-\begin{theorem}
-	If $f$ is an isomorphism then it is an epimorphism and monomorphism.
-\end{theorem}
+\begin{lemma*}
+A function $f:X\rightarrow Y$ is injective if and only if for any two function $g,h:Y\rightarrow X$, from $f\circ g=f\circ h$ follows $g=h$.
+\end{lemma*}
 \begin{proof}
-	Assume $g$ and $h$ are morphisms that fulfill $f\circ g=f\circ h$. By composing with $f^{-1}$ from the left on
-	both sides we obtain $g=h$. This shows $f$ is a monomorphism. In analogous manner one can show that $f$
-	is epimorphism.
+If $f$ is injective then this is clear since otherwise one would have a $y \in Y$ with $g(y)\neq h(y)$ but $f(g(y))=f(h(y))$
+which contradicts the injectivity. On the other hand, if above statement would hold for each $g,h$ but $f$ would not be injective, then there is $y\in Y$ and $x_1\neq x_2$ with $f(x_1)=f(x_2)=y$. We construct two different functions $g, h:Y\rightarrow X$, where $g$ only takes the constant value $x_1$ and $h$ the constant value $x_2$. It follows $f\circ g=f\circ h$ and by assumption this implies $g=h$ in contradiction to $g\neq h$.
+\end{proof}
+And similar for surjectivity:
+\begin{lemma*}
+	A function $f:X\rightarrow Y$ is surjective if and only if
+	for any two function $g,h:Y\rightarrow X$, from $g\circ f=h\circ f$ follows $g=h$.
+\end{lemma*}
+\begin{proof}
+If $f$ is surjective than the entire $Y$ is its image. So $g=h$ follows immediately. The other direction follows from noting that if the image of $f$ would be not the entire $Y$, then two functions with $g\circ f=h\circ f$ always could 
+be made different on the part of $Y$ which is not in the image of $f$. We silently excluding the trivial cases of either $Y=\emptyset$ or $X$ having only one element.
 \end{proof}
 
-\begin{example}
-	Remember our previous introduced category $Mon$. Let us look at the morphism $i:N\rightarrow Z$
-	which is the inclusion of natural numbers into all integers.
-	We show $i$ is monomorph. For this let $g,h\in Hom(Z,N)$ and $i\circ g=i\circ h$.
-	This implies for any $x\in Z$, $g(x)=h(x)$ and so $g=h$.\\
-	Next, we show $i$ is epimorph as well. First we make a simple observation:\\
-	For any morphism $f:Z\rightarrow N$ and positive $n\in Z$ we have by definition of morphisms in $Mon$,\\
-	$$0=f(n-n)=f(n)+f(-n)$$
-	which implies 
-	$$-f(n)=f(-n)$$
-	Now assume $f\circ i =g\circ i$ for $f,g\in Hom(Z,N)$. This implies trivially $f(z)=g(z)$ for $z\in Z\cap N$.
-	For negative $z\in Z$, we have by the previous remark
-	$$f\circ i(-z)=f(-z)=-f(z)$$
-	and the same of $g$
-	$$g\circ i(-z)=-g(z)$$
-	Combined this yields $-g(z)=-f(z)$, hence $g(z)=f(z)$.
-	Altogether this shows $f=g$ and thus $i$ is epimorph.\\
-	Interestingly $i$ is not isomorph! Otherwise there would be a morphism $i^{-1}:Z\rightarrow N$
-	such that $i\circ i^{-1}(-1)=-1$, but this is impossible since $-1\notin N$.	
-\end{example}
 
-\begin{example}
-	This example comes from topology and regards the category $Top$ which objects are topological spaces and the morphisms are taken to be all continuous maps. Consider the identity map $id: (N, \tau)\rightarrow (N,\sigma)$, where $N$ denotes the set of natural numbers one time equipped with the discrete topology $\tau$ and one times with the chaotic topology $\sigma$. The latter consists of the sets $N$ and $\emptyset$ only. Trivially this map is an monomorphism and epimorphism, but it does not have an inverse. This inverse necessarily would be the map  $id: (N, \sigma)\rightarrow (N,\tau)$, but this is not continuous.
-\end{example}
-
-These examples show, in the above theorem the other direction in general does not hold.
-In category theory, epimorph and monomorph do not imply isomorph.
-The question arises, under which additional conditions does this hold?
-For this to answer, we need two more definition.
-
-\begin{definition}
-	\textbf{Retraction}\\
-	A morphism $f\in Hom(A,B)$ is called a retraction if there exists a right inverse that is,
-	a $h\in Hom(B,A)$ with
-	$$f\circ h=id_B$$
-\end{definition}
-
-\begin{definition}
-	\textbf{Section}\\
-	A morphism $f\in Hom(A,B)$ is called a section  if there exists a left inverse that is,
-	a $h\in Hom(B,A)$ with
-	$$h\circ f=id_B$$
-\end{definition}
-
-With this we can formulate the following theorem which gives answer to the above question.
-\begin{theorem}
-	A monomorphism $f$ is an isomorphism if and only if it is a retraction.
-\end{theorem}
-\begin{proof}
-	Assume for the monomorphism $f\in Hom(A,B)$ there is $g\in Hom(B,A)$ such that $f\circ g=id_B$.
-	Then,
-	$$f\circ(g\circ f)=(f\circ g)\circ f=id_B\circ f=f\circ id_B$$
-	Since $f$ is monomorph this implies
-	$$g\circ f=id_B$$
-	and this altogether $g=f^{-1}$.
-\end{proof}
-
-In analogy we have
-\begin{theorem}
-	A epimorphism $f$ is an isomorphism if and only if it is a section.
-\end{theorem}
-\begin{proof}
-	Assume $f\in Hom(A,B)$ is a epimorphism and $g\in Hom(B,A)$ such that $g\circ f=id_B$. Then,
-	$$(f\circ g)\circ f =f\circ(g\circ f)=f\circ id_B=id_B\circ f$$
-	Since $f$ is epimorph this implies
-	$$f\circ g=id_B$$
-	and thus $g=f^{-1}$.
-\end{proof}
 
 \end{document}
 
