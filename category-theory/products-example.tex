@@ -1,0 +1,50 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+
+\begin{example*}
+	Let $X$ be a partial ordered set. That is there exists a binary relation $\leq$ on $X$
+	that fulfills:\\
+	(1) if $a\leq b$ and $b\leq c$ then $a\leq c$\\
+	(2) if $a\leq b$ and $b\leq a$ then $a=b$\\
+	(3) $a\leq a$\\ \\
+	We can define a category by taking as objects all elements from $X$ and as morphisms all relations of the form $a\leq b$ for any $a,b\in X$.\\
+	That means, the set $Hom(a,b)$ is either empty or consists of the only morphism $a\leq b$.\\
+	By (1) associativity is trivially satisfied for the composition. Moreover, (3) ensures the existence of the identity map: $id_a = a\leq a$.\\ \\
+	For a product $a\times b$ the following necessarily would have to be fulfilled:\\
+	For any $x$ with $x\leq a$ and $x\leq b$
+	$$x\leq a\times b$$
+	Projections must fulfill
+	$$a\times b\leq a$$
+	and
+	$$a\times b\leq b$$
+	Altogether, these statements are equivalent of $a\times b$ being the largest lower bound of $a$ and $b$.\\
+    This is an interesting example, where the product directly presents a known concept of partial orders.	
+\end{example*}
+
+
+
+
+\end{document}
+
+	

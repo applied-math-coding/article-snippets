@@ -12,7 +12,9 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
 \newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem*{condition*}{Condition}
@@ -20,9 +22,7 @@
 \setlength\parindent{0pt} %no indent
 
 \begin{document}
-	Products play an important role in applications of category theory. Its definition is like always leaned at the 
-	corresponding construct from set theory.
-\begin{definition}
+\begin{definition*}
 	\textbf{Product}\\
 	In a category $C$ the product of two objects $A_1, A_2$ is an object
 	denoted by $A_1\times A_2$ together with two morphisms
@@ -38,23 +38,31 @@
 	$$
 	p_2\circ\langle f_1,f_2\rangle=f_2
 	$$
-\end{definition}
-The morphisms $p_1, p_2$ are called projections and $\langle f_1, f_2\rangle$ the product morphism of $f_1, f_2$. This shall remind to the product in set theory. One easily verifies that the set theoretic product of two sets fulfills all requirements of this categorical version.\\
+\end{definition*}
+\leavevmode\newline
+The morphisms $p_1, p_2$ are called \textbf{projections} and $\langle f_1, f_2\rangle$ the \textbf{product morphism} of $f_1, f_2$. This shall remind to the Cartesian product in the category $Set$ and one easily verifies that the Cartesian product indeed fulfills all the above stated requirements.\\
+However note, for two object of an arbitrary category the product must not necessarily exist.
+Before we proceed, let us emphasize the importance of the uniqueness of $\langle f_1, f_2 \rangle$ in the definition of a product. Shortly, we will see an example were exactly this uniqueness is the striking feature of products.
+\\ \\
 The notation of a product entails that the product itself only depends on the factors. It turns out that this is correct up to isomorphism.
 
 \begin{theorem} \label{product_isomorphy}
 	The product $A_1\times A_2$ of two objects $A_1, A_2$ is unique up to isomorphism.
 \end{theorem}
 \begin{proof}
-	Let us assume there exists two objects $P$ and $Q$ and corresponding morphisms $p_1, p_2$ and $q_1, q_2$ such that both fulfill the requirements to be the product of $A_1$ and $A_2$. We show, there exists an isomorphism $j:P\rightarrow Q$. We apply the product properties of $P$ onto the case $X=P$, $f_1=p_1$ and $f_2=p_2$. Then by assumption there is a unique morphism $i:P\rightarrow P$ such that $p_1\circ i = p_1$ and $p_2\circ i = p_2$. We conclude 
+	Let us assume there exists two objects $P$ and $Q$ with corresponding morphisms $p_1, p_2$ and $q_1, q_2$ such that both fulfill the requirements to be the product of $A_1$ and $A_2$. We show, there exists an isomorphism $j:P\rightarrow Q$:\\
+	 We apply the product properties of $P$ onto the case $X=P$, $f_1=p_1$ and $f_2=p_2$. Then by assumption there is a unique morphism $i:P\rightarrow P$ such that $p_1\circ i = p_1$ and $p_2\circ i = p_2$. We conclude 
 	\begin{equation} \label{i_equal_id_P}
 	i=id_P
     \end{equation}
+    The uniqueness played the central role in concluding the equation.\\
     We repeat this application but for the case $X=Q$, $f_1=q_1$ and $f_2=q_2$. This yields a unique morphism 
-    $$\langle q_1,q_2 \rangle:Q\rightarrow P$$
-    In analogy, by using the product properties of $Q$, we find from the case $X=P$, $f_1=p_1$ and $f_2=p_2$, the existence of 
-    $$\langle p_1,p_2 \rangle:P\rightarrow Q$$
-    We show that $\langle q_1,q_2 \rangle$ and $\langle p_1,p_2 \rangle$ yields the desired isomorphism and its inverse. Using the properties of product morphism one gets:
+    $$\langle q_1,q_2 \rangle:Q\rightarrow P$$\\
+    Next, in analogy, we consider the product properties of $Q$.
+    Here we apply case $X=P$, $f_1=p_1$ and $f_2=p_2$ that implies the existence of  a morphism
+    $$\langle p_1,p_2 \rangle:P\rightarrow Q$$\\
+    We show that $\langle q_1,q_2 \rangle$ is the desirec isomorphism and $\langle p_1,p_2 \rangle$ its inverse:\\
+     Using the properties of product morphism one gets:
     $$
     p_1\circ \langle q_1,q_2 \rangle \circ \langle p_1,p_2 \rangle = q_1\circ  \langle p_1,p_2 \rangle=p_1
     $$
@@ -70,7 +78,7 @@ The notation of a product entails that the product itself only depends on the fa
     $$
     \langle p_1,p_2 \rangle \circ  \langle q_1,q_2 \rangle=id_P
     $$
-    which yields the desired result.	 
+    and we are done.	 
 \end{proof}
 The next theorem shows that the product is associative in case all factors do exist in $C$.
 
@@ -83,12 +91,13 @@ The next theorem shows that the product is associative in case all factors do ex
 	The proof is similar to the one of theorem \ref{product_isomorphy}. By using
 	several projections one yields a unique morphism $f:(A_1\times A_2)\times A_3\rightarrow A_1\times (A_2\times A_3)$ and another $g:A_1\times (A_2\times A_3)\rightarrow  (A_1\times A_2)\times A_3$. The like in proof of the above theorem, one compares the projections of $f\circ g$ and $g\circ f$ with the projections of $id:(A_1\times A_2)\times A_3\rightarrow (A_1\times A_2)\times A_3$ resp. $id:A_1\times (A_2\times A_3)\rightarrow A_1\times (A_2\times A_3)$.
 \end{proof}
-This last theorem gives sense to products of arbitrary finite factors. Moreover, if a category contains the product of any two objects, it also contains all finite products.
-
-
-
-TODO p46 spaces closed of products  
-
+\leavevmode\newline
+As long as all products exits, the last theorem can be used to define products of arbitrary many finite objects. So for instance 
+$$A_1\times A_2\times A_3\times A_4=A_1\times (A_2\times A_3\times A_4)=
+A_1\times (A_2\times (A_3\times A_4))$$
+All this is independent from the specific way of nesting parentheses.\\
+Also, from the above theorem we conclude, if a category contains the product of any two objects, then
+it contains all finite products.
 
 
 \end{document}
