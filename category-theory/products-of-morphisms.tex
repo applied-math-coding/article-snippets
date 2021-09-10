@@ -1,0 +1,57 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+
+\begin{definition*}
+\textbf{Product of morphisms}\\
+In a category $\mathcal{C}$ consider two morphisms $f\in Hom(A,B)$ and $g\in Hom(C,D)$. Moreover, assume the products $A\times C$ and $B\times D$ exist with the corresponding projection maps $p_A, p_C$ resp. $q_B, q_D$.\\ \\
+We consider the following compositions:
+$$
+f\circ p_A \in Hom(A\times C, B)
+$$
+$$
+g\circ p_C \in Hom(A\times C, D)
+$$
+By the definition of products applied on $B\times D$ and both compositions, we conclude there exists
+$$
+\langle f\circ p_A, g\circ p_C \rangle \in Hom(A\times C, B\times D)
+$$
+We denote this morphism by $f\times g$, that is:
+$$
+f\times g:=\langle f\circ p_A, g\circ p_C \rangle
+$$
+\end{definition*}
+\leavevmode\newline
+Remember the last example where object were elements of a partial ordered set and morphisms all ordered pairs. The product of to objects $a, b$ turned out to be the largest lower bound of $a$ and $b$.\\
+Now, if we have the morphisms $a\leq b$, $c\leq d$ and the products $a\times c$, $b\times d$ exist, then the product of these morphisms is simply
+$$a\times c\leq b\times d$$
+Translating this back to the notation of partial ordered sets, this gives a well-known result:\\
+If $a\leq b$ and $c\leq d$, then the largest lower bound of $a, c$ is lower or equal the largest lower bound of $b,d$.
+
+
+
+
+\end{document}
+
+	
