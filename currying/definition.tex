@@ -46,14 +46,14 @@ In the category $Set$ this is just the usual product of two functions.\\
 
 \begin{definition*}
 	For two objects $B, C\in\mathcal{C}$ we call an object exponential, denoted by
-	$$\mathbf{B^C}$$
+	$$\mathbf{C^B}$$
 	if the following is satisfied:\\
-	(1) $B^C\in\mathcal{C}$\\
-	(2) there is a morphism $\epsilon\in Hom(B^C\times C, B)$ such that:\\
+	(1) $C^B\in\mathcal{C}$\\
+	(2) there is a morphism $\epsilon\in Hom(C^B\times B, C)$ such that:\\
 	For any $f\in Hom(A\times B, C)$ there exists a unique $\tilde{f}\in Hom(A, C^B)$ with $\epsilon\circ(\tilde{f}\times id_B)=f$.
 \end{definition*}
 The aforementioned morphism $\tilde{f}$ is called \textbf{transpose} of $f$.\\
-In the category $Set$ the $B^C$ is nothing else than the set of all function from $C$ to $B$ and $\epsilon$ is given by $\epsilon:(f, x)\mapsto f(x)$.\\
+In the category $Set$ the $C^B$ is nothing else than the set of all function from $B$ to $C$ and $\epsilon$ is given by $\epsilon:(f, x)\mapsto f(x)$.\\
 
 A category in which any pair of objects have a product and an exponential, we call \textbf{cartesian closed}.
 Having all this, we can now formulate the definition of currying.\\
@@ -66,7 +66,7 @@ Having all this, we can now formulate the definition of currying.\\
 	which assigns each $f\in Hom(A\times B, C)$ its transpose $\tilde{f}$.
 \end{definition*}
 
-If we are in category $Set$, this actually provides nothing considerably new. But have a look at the next example. Before that, let us mention that the inverse of $\kappa$ in above definition is the morphism $g\mapsto\epsilon\circ(g\times id_B)$.\\
+If we are in category $Set$, this actually provides nothing considerably new. But have a look at the next example. Before that, let us mention that the inverse of $\kappa$ in the above definition is the morphism $g\mapsto\epsilon\circ(g\times id_B)$.\\
 
 \begin{example*}
 	We can view the formulas of a formal language that extends propositional calculus as objects of a category and take as morphism all relations of the form
