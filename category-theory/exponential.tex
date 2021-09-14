@@ -1,0 +1,55 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+In the category of sets, given two set $B$ and $C$, the set of all functions from $C$ to $B$ is often denoted by $B^C$. It can be constructed as a subset of $PP(C\times B)$, where $P$ denotes the power-set operator. We now aim to generalize this concept in terms of category theory.\\
+
+\begin{definition*}
+In a category $\mathcal{C}$ for two objects $B, C\in\mathcal{C}$ we call an object exponential, denoted by
+	$$\mathbf{C^B}$$
+	if the following is satisfied:\\
+	(1) $C^B\in\mathcal{C}$\\
+	(2) there is a morphism $\epsilon\in Hom(C^B\times B, C)$ such that:\\
+	For any $f\in Hom(A\times B, C)$ there exists a unique $\tilde{f}\in Hom(A, C^B)$ with $\epsilon\circ(\tilde{f}\times id_B)=f$.
+\end{definition*}
+\leavevmode\newline
+At first glance this definition might look a little bewildering. First of all $C^B$ is required to be just an object. Don't let yourself confuse by its special notation. To understand the meaning of $\epsilon$ consider in $Set$ a function $f:A\times B\rightarrow C$. If we fix one element of $A$, say $a$, then we obtain a function $f_a:B\rightarrow C$. That is
+$$f_a(b)=f(a,b)$$
+This way 
+$$a\mapsto f_a$$
+actually is a mapping 
+$$A\rightarrow C^B$$
+This mapping corresponds exactly to the transpose $\tilde{f}\in Hom(A\in C^B)$.\\
+On the other hand, this transpose is connected to the function $f$ by the property that 
+$$\tilde{f}(a)(b)=f(a,b)$$
+The r.h.s we also can write as
+$$\left(\tilde{f}(a),b\right)\mapsto \tilde{f}(a)(b)$$
+or by regarding as product
+$$(\tilde{f}\times id_B)(a,b)\mapsto \tilde{f}(a)(b)$$
+From these expressions we see that this map operates by evaluating the the first component,
+which is in $C^B$, at the point given in the second component, which is in $B$.\\
+This reveals the sense of $\epsilon$, and it is to considered like an abstract evaluation.\\ \\
+Like for products, the exponential must not necessarily exist. We say a category is \textbf{cartesian closed} if for any pair of objects its product and exponential exists.
+\end{document}
+
+	
