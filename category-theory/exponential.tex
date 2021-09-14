@@ -33,7 +33,8 @@ In a category $\mathcal{C}$ for two objects $B, C\in\mathcal{C}$ we call an obje
 	For any $f\in Hom(A\times B, C)$ there exists a unique $\tilde{f}\in Hom(A, C^B)$ with $\epsilon\circ(\tilde{f}\times id_B)=f$.
 \end{definition*}
 \leavevmode\newline
-At first glance this definition might look a little bewildering. First of all $C^B$ is required to be just an object. Don't let yourself confuse by its special notation. To understand the meaning of $\epsilon$ consider in $Set$ a function $f:A\times B\rightarrow C$. If we fix one element of $A$, say $a$, then we obtain a function $f_a:B\rightarrow C$. That is
+At first glance this definition might look a little bewildering. First of all $C^B$ is required to be just an object in $\mathcal{C}$. Don't let yourself confuse by its special notation! Secondly, the product $C^B\times B$ is required to exist and $\epsilon, \tilde{f}$ must be morphisms in $\mathcal{C}$.\\ \\
+To understand the meaning of $\epsilon$ consider in $Set$ a function $f:A\times B\rightarrow C$. If we fix one element of $A$, say $a$, then we obtain a function $f_a:B\rightarrow C$. That is
 $$f_a(b)=f(a,b)$$
 This way 
 $$a\mapsto f_a$$
@@ -48,7 +49,7 @@ or by regarding as product
 $$(\tilde{f}\times id_B)(a,b)\mapsto \tilde{f}(a)(b)$$
 From these expressions we see that this map operates by evaluating the the first component,
 which is in $C^B$, at the point given in the second component, which is in $B$.\\
-This reveals the sense of $\epsilon$, and it is to considered like an abstract evaluation.\\ \\
+This reveals the sense of $\epsilon$, and it has to be considered like an abstract evaluation.\\ \\
 Like for products, the exponential must not necessarily exist. We say a category is \textbf{cartesian closed} if for any pair of objects its product and exponential exists.
 \end{document}
 
