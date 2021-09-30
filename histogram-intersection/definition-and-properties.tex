@@ -1,0 +1,106 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+	Throughout this section we denote by $(\Omega, \mu, \mathcal{A})$ a probability space with measure $\mu$ and $\sigma$-algebra $\mathcal{A}$.\\ \\	
+	Recall, a \textbf{probability density} is a non-negative, measure-able function $f:\Omega\rightarrow R_{+}$
+	such that
+	$$\int_{\Omega}f d\mu=1$$\\
+	A special case is given by a \textbf{histogram} in which case $\mathcal{A}$ is just a finite disjoint separation of $\Omega$: 
+	$$\Omega=\bigcup_i^n A_i$$
+	A 'bar' of this histogram is then associated with an element $A\in\mathcal{A}$, and its height $h_i$ can be interpreted as a probability density:
+	$$f:A_i\mapsto h_i$$
+	Moreover, we can define $\mu$ by
+	$$\mu(A_i)=1/\sum_i h_i$$
+	This step usually is denoted 'normalization'.\\
+	Then we have:	
+	$$\int_{\Omega}f d\mu=\sum_i f(A_i)\mu(A_i)=\sum_i h_i\mu(A_i)=1$$\\
+	Next, we define a way to measure the distance between two probability densities.
+\begin{definition*}
+	\textbf{Histogram distance}\\
+	Let $f$ and $g$ denote two probability densities defined on $(\Omega, \mu, \mathcal{A})$.
+	We define its distance by
+	$$d(f,g)=1-\int_{\Omega}\min\{f,g\}d\mu$$
+\end{definition*}
+Note, that since $\min$ is a continuous and hence measure-able function, the above integral is well-defined.\\
+For the case of two histograms the distance is given by
+$$d(f,g)=1-\sum_i \min\{h_i, k_i\} \mu(A_i)$$
+where $h_i, k_i$ denote the $i$'th bar's height for the first resp. second histogram.
+To visualize the above definition, note that $\min\{h_i, k_i\}$ just is the amount the two bars do intersect.
+If $h_i, k_i$ are equal, then this is equivalent to full intersection, and if $\min\{h_i, k_i\}=0$ then this means no intersection at all.\\ \\
+A satisfactory definition of a distance must fulfill the axiom of a metric. These are:
+\begin{definition*}
+\textbf{Metrix axioms}\\
+(1) $d(f,g)=d(g,f)$\\
+(2) $d(f,f)=0$\\
+(3) $d(f,g)=0 \leftrightarrow f=g$\\
+(4) $d(f,g)\leq d(f,h)+d(h,g)$ for any $h$
+\end{definition*}
+(4) is the so called 'triangle inequality' and can be interpreted as moving directly from
+$f$ to $g$ has shorter or the same distance as by forcing the move to pass via $h$.\\
+
+Let us verify that all this is fulfilled by the histogram distance.
+\begin{theorem*}
+	The histogram distance is a metric defined on the space of probability densities on $(\Omega, \mu, \mathcal{A})$.
+\end{theorem*}
+\begin{proof}
+	(1) and (2) are trivial by the definition.\\
+	For (3) assume $d(f,g)=0$. Then,
+	$$\int \min\{f,g\}d\mu = 1=\int f d\mu$$
+	Therefore
+	$$\int f-\min\{f,g\}d\mu=0$$
+	Since $f-\min\{f,g\}\geq 0$ this implies
+	$$f=\min\{f,g\} \ a.e$$
+	$a.e$ stands for 'almost everywhere' and expresses equality up to a set of measure zero.
+	Since in probability theory functions are identified that are equal except on a set of measure zero,
+	we have shown (3) to hold.\\
+	To show (4) assume $h$ is another probability density. We have to show
+	$$1-\int\min\{f,g\}d\mu\leq 1-\int\min\{f,h\}d\mu + 1-\int\min\{h,g\}d\mu$$
+	what is equivalent to
+	\begin{equation} \label{main_for_4}
+		\int\min\{f,h\}d\mu + \int\min\{h,g\}d\mu\leq 1+\int\min\{f,g\}d\mu
+	\end{equation}
+	For any point $\omega$ assume w.l.o.g $f(\omega)\leq g(\omega)$
+	We split $\Omega$ into two disjoint sets
+	$$A_1:=\{\omega\in\Omega \ : \ f(\omega) < g(\omega)\}$$
+	$$A_2:=\{\omega\in\Omega \ : \ f(\omega) \geq  g(\omega)\}$$
+	Both sets are measure-able since the subtraction is a continuous function.
+	With this we can write
+	\begin{align*}
+	\int\min\{f,g\}d\mu&=\int_{A_1}\min\{f,g\}d\mu+\int_{A_2}\min\{f,g\}d\mu\\
+	&=\int_{A_1}f d\mu+\int_{A_2}g d\mu\\
+	&\geq \int_{A_1}\min\{f,h\}d\mu + \int_{A_2}\min\{h,g\}d\mu
+	\end{align*}
+	So according to (\ref{main_for_4}) is remains to show
+	$$\int_{A_2}\min\{f,h\}d\mu + \int_{A_1}\min\{h,g\}d\mu\leq 1$$
+    But this is straightforward by noting
+    \begin{align*}
+    	&\int_{A_2}\min\{f,h\}d\mu + \int_{A_1}\min\{h,g\}d\mu\leq \int_{A_2}h d\mu + \int_{A_1}h d\mu\\
+    	&=\int h d\mu=1
+    \end{align*}
+    
+\end{proof}
+
+\end{document}
+
+	
