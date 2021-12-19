@@ -1,0 +1,68 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+\newtheorem*{problem*}{Problem}
+\newtheorem*{algorithm*}{Algorithm}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+The target area is given by
+$$[\xi_1, \xi_2]\times [\eta_1, \eta_2]$$
+If the initial velocity in horizontal resp. vertical direction is $u_0$ resp. $v_0$, then
+after $n$ steps the horizontal resp. vertical position of the particle is
+\begin{equation} \label{x_n}
+x_n=n u_0-\frac{1}{2}n(n-1)
+\end{equation}
+resp.
+\begin{equation} \label{y_n}
+y_n=n v_0-\frac{1}{2}n(n-1)
+\end{equation}
+ 
+ For the vertical velocity $v_n$ at step $n>0$ we have
+ $$v_n=v_{n-1}-1$$
+ Thus,
+ $$v_n=v_0-n$$
+ When the particle reaches the highest point, it must necessarily fulfill
+ $$v_m=0$$
+ Therefore the previous equation implies
+ $$m=v_0$$
+ By putting this in the equation (\ref{y_n}) yields:
+ $$y_{max}=\frac{1}{2}v_0(v_0+1)$$
+ The latter shows, finding the highest possible $v_0$, automatically gives the highest possible
+ vertical position $y_{max}$.\\ \\
+ For given $u_0$ let us compute all possible steps that makes the particle horizontally ending up in $[\xi_1, \xi_2]$:\\
+ By (\ref{x_n}) the determining relation for this is
+ $$\xi_1\leq n u_0-\frac{1}{2}n(n-1)\leq \xi_2$$
+ This is an quadratic relation in $n$. By using $\xi_1, \xi_2\geq 0$ one easily verifies 
+ that the $n\geq 0$ that satisfy the above relation are exactly those that satisfy
+ $$\sqrt{\left(u_0+\frac{1}{2}\right)^2-2\xi_2}+u_0+\frac{1}{2}\leq n\leq \sqrt{\left(u_0+\frac{1}{2}\right)^2-2\xi_1}+u_0+\frac{1}{2}$$
+ \\
+ Next, for give $u_0$ and given $n$ within the above interval, let us determine the interval of possible $v_0$ such that the particle vertically ends up within $[\eta_1, \eta_2]$ at step $n$.\\
+ By use of (\ref{y_n}), we can formulate this as
+ $$\eta_1\leq nv_0-\frac{1}{2}n(n-1)\leq \eta_2$$
+ This yields
+ $$\frac{1}{n}\left(\eta_1+\frac{1}{2}n(n-1)\right)\leq v_0 \leq \frac{1}{n}\left(\eta_2+\frac{1}{2}n(n-1)\right)$$
+ \\
+ Note, when doing the corresponding iterations, one has to ensure by use of suitable Gauss-brackets, all velocities and steps to be natural numbers. 
+\end{document}
+
+	
