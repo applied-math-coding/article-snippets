@@ -1,0 +1,57 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+One of the oldest algorithms is probably the famous Euclidean algorithm.
+Its purpose is to compute the greatest common divisor (gcd) of two natural numbers.\\
+That is, given $a,b\in\mathbb{N}$ the gcd is the largest natural number that divides $a$ as well as $b$.\\
+The existence of the gcd follows from the fact that $a$ and $b$ at least have $1$ as common divisor.\\
+This makes gcd being a function
+$$gcd:\mathbb{N}\times\mathbb{N}\rightarrow \mathbb{N}$$
+
+Let us assume $a>b$ and
+\begin{equation} \label{gcd(a,b)}
+gcd(a,b)=g
+\end{equation}
+Then by Euclid's division lemma there exist unique numbers $m_0$, $r_0<b$ such that
+\begin{equation} \label{a_by_b}
+a=m_0\cdot b+r_0
+\end{equation}
+If $r_0=0$ then trivially $g=b$.
+Otherwise, since $a$ is divisible by $g$ and $b$ as well, $r_0$ can be written in the form
+$$r_0=n_0\cdot g$$
+In other words, $g$ is a divisor of $r_0$. Moreover, it is the greatest common divisor of
+$b$ and $r_0$:
+\begin{equation} \label{gcd(b,r_0)}
+gcd(b, r_0)=g
+\end{equation}
+For this to see assume to the contrary $gcd(b, r_0)>g$. Then from the representation of $a$ by (\ref{a_by_b}) we would infer that $gcd(b, r_0)$ as well is a divisor of $a$ and $b$. But this contradicts
+$g$ being the greatest among all common divisors of $a$ and $b$.\\
+Comparing equations (\ref{gcd(a,b)}) and (\ref{gcd(b,r_0)}), we see they are for the same $g$ but
+the latter involving numbers strictly lower than those of the first ($a>b$ and $b>r_0$).
+So, we have reduced the initial problem of finding the gcd for $a$ and $b$ to one that involves lower
+numbers. Exactly this can be exploited to formulate a recursive algorithm. The terminal condition is given by $r_0=0$ that produces a gcd like explained above.
+\end{document}
+
+	
