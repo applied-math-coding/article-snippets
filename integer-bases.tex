@@ -1,0 +1,52 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+\begin{theorem}
+	Let $r\in\mathbb{N}$ with $r>1$.
+	Every natural number $n$ can be presented uniquely in the form
+	$$n=\sum_{i=0}^m a_i r^i$$
+	with $a_i<r$ for all $i$.
+\end{theorem}
+\begin{proof}
+	The proof will be done by induction on $n$. For the case $n=0$ the only presentation obviously
+	is
+	$$0=0\cdot r^0$$
+	Now, assume the statement is true for all natural numbers below of $n$.
+	First of all, we ask, what is the greatest natural number $m$ such that 
+	$$r^{m}\leq n$$
+	By taking the logarithm we find,
+	$$m=\left\lfloor\frac{\ln n}{\ln r}\right\rfloor$$
+	By the \href{https://en.wikipedia.org/wiki/Euclidean_division#Division_theorem}{Euclid's division lemma}
+	there are unique $a_m, b_m\in\mathbb{N}$ with $b_m<r^m$ such that
+	$$n=a_m r^m+b_m$$
+	The definition of $m$ trivially implies $a_m<r$.
+	Moreover, since $b_m<r^m$ and thus $b_m<n$ we can apply the induction hypotheses to get a unique presentation
+	$$b_m=\sum_{i=0}^p a_i r_i$$
+	Noting that obviously $p<m$, by combining the last two equations and taking their uniqueness into account we obtain the desired presentation of $n$.	
+\end{proof}
+\end{document}
+
+	
