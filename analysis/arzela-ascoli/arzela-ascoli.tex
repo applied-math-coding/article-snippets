@@ -1,0 +1,107 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+An often in analysis used theorem states that in $\mathbb{R}^n$ any sequence contained
+in a compact subset has a convergent sub-sequence.
+Since in the specific case of $\mathbb{R}^n$ compact sets are exactly those that are closed
+and bounded, one has the following alternative formulation:
+\begin{theorem} \label{conv_sub_sequ_in_R}
+	For any bounded sequence in $\mathbb{R}^n$ there is a convergent sub-sequence.
+\end{theorem}
+This theorem makes a statement about bounded sequences in a complete normed space, that is, a Banach space (B-space).
+The immediate question arises if this theorem as well holds for other B-spaces and in particular
+the B-space consisting of all continuous real-value functions on some compact $M\subset\mathbb{R}$ equipped with the supremum norm:
+$$|f|:=\sup_{x\in M}|f(x)|$$
+This norm often is referred as the norm of uniform continuity.\\ \\
+Although what follows can be formulated in much more generality, let us restrict to the case of real-valued 
+functions defined on some compact set $M\subset\mathbb{R}$.\\ \\
+It turns out that the following property is essential to formulate an analogous version of the theorem:
+\begin{definition}
+	\textbf{Equicontinuity}\\
+	A family $\mathcal{F}$ of functions is called equicontinuous if for any $\epsilon>0$ there exists a 
+	$\delta >0$ such that for any $x,y\in M$ with $|x-y|<\delta$ implies for all $f\in\mathcal{F}$
+	$$|f(x)-f(y)|<\epsilon$$
+\end{definition}
+So crucial part in this definition is that $\delta$ can be chosen independently of any $f\in\mathcal{F}$.
+In other words, by taking an adequate near point $y$ to $x$, we can ensure that for all functions in $\mathcal{F}$ the images of these points do lie $\epsilon$-near.
+\begin{theorem}
+	\textbf{Arzela-Ascoli}\\
+	For an equicontinuous sequence $(f_n)$ of functions which are bounded in the sense that for some $K>0$
+	$$|f_n|<K$$
+	for all $n$,
+	there exists a uniform convergent sub-sequence.
+\end{theorem}
+\begin{proof}
+	If we consider one single point $x\in M$, then since $|f_n(x)|<K$ by Theorem \ref{conv_sub_sequ_in_R}
+	there is a convergent sub-sequence. But this sub-sequence is ensured to only converge for this specific point $x$. Since $M$ is a separable space it contains a countable dense subset 
+	$$D=\{x_1, x_2, \dots\}$$
+	This is, $D$ is such that for any point $x\in M$ any neighborhood $U_{\epsilon}(x)$ has non-empty intersection with $D$.\\
+	We construct by induction a sub-sequence $\sigma$ of $(1, 2, \dots)$  as follows:\\
+    We start with $x_1\in D$ and pick a sub-sequence $s^1(n)$ like initially pointed out, such that $f_{s^1(n)}(x_1)$ converges. We define 
+    $$\sigma(1):=s^1(1)$$
+    So we take the first element of $s^1$ only. Then we move to the next element $x_2\in D$ and again pick a sub-sequence $s^2(n)$ of $s^1(n+1)$ such that $f_{s^2(n)}(x_2)$ converges. We define
+    $$\sigma(2):=s^2(1)$$
+    by again using the first element but now from $s^2(n)$.
+    Essentially here to understand is the shift we do when we pick $s^2(n)$ as sub-sequence from $s^1(n+1)$. This makes $s^2(n)$ being a sub-sequence of $(s^1(2), s^1(3), \dots)$.\\
+    We can follow with this inductively to define the entire sequence $\sigma$. The construction ensures
+    that $\sigma$ up from index $i$ is a sub-sequence of $s^i$. Hence $f_{\sigma(n)}(x_i)$ converges for all $x_i\in D$.\\
+    Further, we will show that $f_{\sigma(n)}$ converges for all $x\in M$ as well.
+    For this consider any $x\in M$. We will show that $f_{\sigma(n)}(x)$ is a Cauchy-sequence.
+    Without loss of generality and to simplify notations let us assume $\sigma=(1, 2, \dots)$.
+    Let us given $\epsilon>0$. Consider $z\in D$ with $|x-z|<\delta$ such that for all $i$
+    $$|f_i(x)-f_i(z)|<\frac{\epsilon}{3}$$
+    Since at $z$ the sequence $(f_n(z))$ converges, there is $N>0$ such that for all $i,j>N$
+    $$|f_i(z)-f_j(z)|<\frac{\epsilon}{3}$$
+    By making use of 
+    $$f_i(x)-f_j(x)=f_i(x)-f_j(z)+f_j(z)-f_i(z)+f_i(z)-f_j(x)$$
+    the triangle inequality leads together with the above to the estimate
+    $$|f_i(x)-f_j(x)|\leq |f_i(x)-f_j(z)|+|f_j(z)-f_i(z)|+|f_i(z)-f_j(x)|<\epsilon$$
+    This shows $(f_n(z))$ is a Cauchy sequence and hence it converges.
+    Note, this argument makes indirectly use of $\mathbb{R}$ being a complete metric space, that is, a space in which every Cauchy sequence converges.\\
+    So far we already have reached much with most basic techniques. We were able to construct a sub-sequence of $(f_n)$ that converges point-wise. This step is typical for many similar proofs about convergence.
+    Next, we will show that the convergence even is uniform. Here it is the first time where the assumed
+    compactness of $M$ comes into play. Let us fix some $\epsilon>0$ and consider some $x\in M$.
+    By assumption on equicontinuity we can find $\delta>0$ such that 
+    $$|f_{\sigma(i)}(x)-f_{\sigma(j)}(z)|<\frac{\epsilon}{3}$$
+    for all $z\in U_{\delta}(x)$. Moreover, there is some $N(x)>0$ such that 
+    $$|f_{\sigma(i)}(x)-f_{\sigma(j)}(x)|<\frac{\epsilon}{3}$$
+    for all $i,j>N(x)$.
+    Both together imply by using the triangle inequality similar like above
+    $$|f_{\sigma(i)}(z)-f_{\sigma(j)}(z)|<\epsilon$$
+    for all $z\in U_{\epsilon}(x)$ and all $i,j>N(x)$.
+    We can do this construction for all $x\in M$ and cover $M$ with the resulting
+    $\{U_{\epsilon}(x): x\in M\}$. Because $M$ is compact, there must be a finite sub-cover
+    $\{U_{\epsilon}(x_1), U_{\epsilon}(x_2), \dots, U_{\epsilon}(x_n) \}$.
+    By defining
+    $$N:=\max\{N(x_i): i \leq n\}$$ we have that for all $x\in M$
+    and $i,j>N$
+    $$|f_{\sigma(i)}(x)-f_{\sigma(j)}(x)|<\epsilon$$
+    But this just expresses $f_{\sigma(n)}$ to be an uniform Cauchy sequence.	
+\end{proof}
+
+
+\end{document}
+
+	
