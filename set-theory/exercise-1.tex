@@ -1,0 +1,104 @@
+\documentclass[17pt]{extarticle}
+%\usepackage[paperheight=4in]{geometry}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\pagestyle{empty} %no page numbering
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{condition*}{Condition}
+
+\setlength\parindent{0pt} %no indent
+
+\begin{document}
+We will use the following more or less standard notation:
+$$X\backslash Y:=\{z\in X : z\notin Y\}$$
+For convenience let us restate the relation that holds between the sets:
+\begin{equation} \label{main_eq}
+	A\times B\cup B\times A=C\times D\cup D\times C
+\end{equation}
+We will proof the statement by contradiction and therefore assume it does not hold. Then either $A$ or $B$ is not equal to any of $D$ or $C$.
+Without loss of generality we can assume this holds for $A$, that is, $A\neq C$ and $A\neq D$.
+In case $B$ is the one, the same arguments as follow can be applied in analogy.\\
+First, we are going to show that neither $A\subset C$ nor $A\subset D$.
+To the contrary we assume $A\subset C$.
+The case $A\subset D$ can be treated in full analogy.
+The entire chain of arguments is a repeatedly application of the equation (\ref{main_eq}).\\
+By assumptions we have
+$$C\backslash A\neq\emptyset$$
+Now if we apply (\ref{main_eq}) from right to left we obtain
+$$C\backslash A\times D\subset B\times A$$
+This shows two things:
+\begin{equation} \label{CwA_subs_B}
+C\backslash A\subset B
+\end{equation}
+\begin{equation} \label{D_subs_A}
+D\subset A
+\end{equation}
+Moreover, since $A\neq D$,
+$$A\backslash D\neq\emptyset$$
+Applying (\ref{main_eq}) from left to right on the subsets $A\backslash D$ and $C\backslash A$
+gives
+$$A\backslash D\times C\backslash A\subset C\times D$$
+From this we infer
+$$C\backslash A\subset D$$
+Altogether we have
+$$C\backslash A\times C\backslash A\subset C\times D$$
+and this can be used to apply (\ref{main_eq}) from right to left:
+$$C\backslash A\times C\backslash A\subset A\times B\cup B\times A$$
+This gives an immediate contradiction since non of the factors on the left
+intersect with $A$. So we must refute the assumption $A\subset C$.\\
+
+So far we have shown that under our assumption we have 
+\begin{equation} \label{AwC_not_empty}
+A\backslash C\neq\emptyset
+\end{equation}
+\begin{equation} \label{AwD_not_empty}
+A\backslash D\neq\emptyset
+\end{equation}
+By (\ref{main_eq}) applied from left to right we see
+$$A\subset C\cup D$$
+and with this using (\ref{AwC_not_empty}), (\ref{AwD_not_empty})
+shows the existence of two distinct $a, a'\in A$ with
+\begin{equation} \label{a_not_in_C}
+	a\in D\backslash C
+\end{equation}
+\begin{equation} \label{a'_not_in_D}
+	a'\in C\backslash D
+\end{equation}
+This in particular shows $C\backslash D\neq\emptyset$ and $D\backslash C\neq\emptyset$.\\
+Applying (\ref{main_eq}) from right to left shows
+$$C\backslash D\times D\backslash C\subset A\times B\cup B\times A$$
+that implies 
+$$C\backslash D\cap B\neq\emptyset \ \text{or} \ D\backslash C\cap B\neq\emptyset$$
+So either there is $b\in D\backslash C\cap B$ or $b'\in C\backslash D\cap B$.
+Then either
+$$(a, b)\in  D\backslash C\times  D\backslash C$$
+or
+$$(a', b')\in C\backslash D\times C\backslash D$$
+Especially this means
+$$(a,b) \notin C\times D\cup D\times C$$
+resp.
+$$(a', b')\notin C\times D\cup D\times C$$
+what contradicts (\ref{main_eq}) and shows we must drop our assumptions.\\ \\
+In summary we have shown either $A=C$ or $A=D$ resp. either $B=C$ or $B=D$.
+In order to finish the proof we have to consider the case $A=B$.\\
+Without loss of generality we assume $A=C$. Then (\ref{main_eq}) becomes
+$$C\times B=C\times D\cup D\times C$$
+from what we infer $B=D$. A similar argument leads to $B=C$ if we assume $A=D$.\\
+Finally, we have shown either $A=C$ and $B=D$ or $A=D$ and $B=C$.
+\end{document}
+
+	
